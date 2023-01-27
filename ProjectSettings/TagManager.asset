@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - Bullet
+  - Enemy
+  - Destroyer
+  - Timer
+  - Level Text
+  - GunGiving
+  - The End
+  - Boxer
+  - Bouncer
+  - Girder
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ground
+  - Water
+  - UI
+  - Player
+  - Enemy
+  - Bullet
+  - AntiBullet
+  - Despair
+  - Boxer
+  - Bouncer
+  - BulletOnly
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4281400215
+    locked: 0
+  - name: Level
+    uniqueID: 2515798299
+    locked: 0
+  - name: Player
+    uniqueID: 3220561203
+    locked: 0
