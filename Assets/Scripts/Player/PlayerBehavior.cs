@@ -32,9 +32,6 @@ public class PlayerBehavior : MonoBehaviour
     TextKeeper textUpdate;
     public bool Gun = false;
     GameObject gunArm;
-    bool g = false;
-    bool u = false;
-    public bool N = false;
 
     // Start is called before the first frame update
     void Start()
@@ -46,10 +43,6 @@ public class PlayerBehavior : MonoBehaviour
         Despair = GameObject.Find("Despair");
         gunArm = GameObject.Find("Gun");
         AudioSauce = GetComponent<AudioSource>();
-        Gun = false;
-        g = false;
-        u = false;
-        N = false;
         CarStart();
     }
 
@@ -59,187 +52,146 @@ public class PlayerBehavior : MonoBehaviour
 
 
         Debug.Log(ControllerTest.instance.XMove);
-        ////GUN
-        //if (Input.GetKeyDown(KeyCode.G))
-        //{
-        //    g = true;
-        //}
-        //if (Input.GetKeyDown(KeyCode.U) && g)
-        //{
-        //    u = true;
-        //}
-        //if (Input.GetKeyDown(KeyCode.N) && u)
-        //{
-        //    N = true;
-        //    gunArm.SetActive(true);
-        //}
-        //if (gunArm != null && g && u && N)
-        //{
-        //    controller.UsingGUN();
-        //}
-        //else if (Gun && gunArm != null)
-        //{
-        //    gunArm.SetActive(true);
-        //}
-        //else if (!Gun && gunArm != null)
-        //{
-        //    gunArm.SetActive(false);
-        //}
-        //if (touchingGround)
-        //{
-        //    onGround = Physics2D.BoxCast(transform.position, new Vector2(.5f, .2f), 0, Vector2.down, 1, GroundMask);
-        //}
-        //else
-        //{
-        //    onGround = false;
-        //}
-        //if (rb.velocity.x > 0)
-        //{
-        //    GetComponent<Animator>().SetBool("Falling", false);
-        //}
-        //else if (rb.velocity.x < 0)
-        //{
-        //    GetComponent<Animator>().SetBool("Falling", true);
-        //}
-        ////Checks which direction you should be facing
-        //if (Left)
-        //{
-        //    sr.flipX = true;
-        //}
-        //else
-        //{
-        //    sr.flipX = false;
-        //}
-        ////BONK
-        //if (playBonk && hitWall)
-        //{
-        //    AudioSource.PlayClipAtPoint(Bonk, Camera.main.transform.position);
-        //    playBonk = false;
-        //}
-        ////Checks if you should be rolling, then makes you roll.
-        //if (rollTime)
-        //{
-        //    if (Left)
-        //    {
-        //        transform.Rotate(0, 0, -360 * Time.deltaTime);
-        //    }
-        //    else
-        //    {
-        //        transform.Rotate(0, 0, 360 * Time.deltaTime);
-        //    }
-        //}
-        ////Re-enables movement if you have just dove
-        //if (onGround)
-        //{
-        //    GetComponent<Animator>().SetBool("Grounded", true);
-        //    playBonk = false;
-        //    if (rollTime)
-        //    {
-        //        rollTime = false;
-        //    }
-        //    ableToMove = true;
-        //    CancelInvoke("StopDiving");
-        //    transform.eulerAngles = Vector3.forward * 0;
-        //}
-        //else
-        //{
-        //    GetComponent<Animator>().SetBool("Grounded", false);
-        //    //Despair Mode
-        //    DespairMode = Physics2D.Raycast(transform.position, Vector2.up, 1f, DespairMask)/*.transform.gameObject*/;
-        //    if (DespairMode && despairCooldown)
-        //    {
-        //        Vector2 HoldingOn;
-        //        HoldingOn.x = Despair.transform.position.x - 2;
-        //        HoldingOn.y = Despair.transform.position.y - 3;
-        //        transform.position = HoldingOn;
-        //        ableToMove = false;
-        //        if (Input.GetKeyDown(KeyCode.Space))
-        //        {
-        //            DespairMode = false;
-        //            despairCooldown = false;
-        //            Invoke("CoolingOff", 1);
-        //        }
-        //    }
-        //}
+      
+        if (touchingGround)
+        {
+            onGround = Physics2D.BoxCast(transform.position, new Vector2(.5f, .2f), 0, Vector2.down, 1, GroundMask);
+        }
+        else
+        {
+            onGround = false;
+        }
+        if (rb.velocity.x > 0)
+        {
+            GetComponent<Animator>().SetBool("Falling", false);
+        }
+        else if (rb.velocity.x < 0)
+        {
+            GetComponent<Animator>().SetBool("Falling", true);
+        }
+        //Checks which direction you should be facing
+        if (Left)
+        {
+            sr.flipX = true;
+        }
+        else
+        {
+            sr.flipX = false;
+        }
+        //BONK
+        if (playBonk && hitWall)
+        {
+            AudioSource.PlayClipAtPoint(Bonk, Camera.main.transform.position);
+            playBonk = false;
+        }
+        //Checks if you should be rolling, then makes you roll.
+        if (rollTime)
+        {
+            if (Left)
+            {
+                transform.Rotate(0, 0, -360 * Time.deltaTime);
+            }
+            else
+            {
+                transform.Rotate(0, 0, 360 * Time.deltaTime);
+            }
+        }
+        //Re-enables movement if you have just dove
+        if (onGround)
+        {
+            GetComponent<Animator>().SetBool("Grounded", true);
+            playBonk = false;
+            if (rollTime)
+            {
+                rollTime = false;
+            }
+            ableToMove = true;
+            CancelInvoke("StopDiving");
+            transform.eulerAngles = Vector3.forward * 0;
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("Grounded", false);
+        }
 
-        ////Movement
-        //if (ableToMove)
-        //{
-        //    //Jump, jump, jump, jump
-        //    if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && onGround && canJump)
-        //    {
-        //        jumping = true;
-        //        canJump = false;
-        //        GetComponent<Animator>().SetTrigger("Jumping");
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        //    {
-        //        if (onGround)
-        //        {
-        //            //Ducking movement would happen here
-        //        }
-        //        else
-        //        {
-        //            //Mid-air diving
-        //            ableToMove = false;
-        //            playBonk = true;
-        //            if (!Left)
-        //            {
-        //                rb.AddRelativeForce(transform.right * DiveSpeed * 1);
-        //                transform.eulerAngles = Vector3.forward * -90;
-        //            }
-        //            else
-        //            {
-        //                rb.AddRelativeForce(transform.right * DiveSpeed * -1);
-        //                transform.eulerAngles = Vector3.forward * 90;
-        //            }
-        //            Invoke("StopDiving", 4);
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    //Cancel Dive
-        //    if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && !rollTime)
-        //    {
-        //        playBonk = false;
-        //        rb.velocity /= 2;
-        //        StopDiving();
-        //    }
-        //    //Bonking 
-        //    if (Left && touchingGround)
-        //    {
-        //        hitWall = Physics2D.Raycast(transform.position, Vector2.left, 1f, GroundMask);
+        //Movement
+        if (ableToMove)
+        {
+            //Jump, jump, jump, jump
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && onGround && canJump)
+            {
+                jumping = true;
+                canJump = false;
+                GetComponent<Animator>().SetTrigger("Jumping");
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                if (onGround)
+                {
+                    //Ducking movement would happen here
+                }
+                else
+                {
+                //mid-air diving
+                    ableToMove = false;
+                    playBonk = true;
+                if (!Left)
+                    {
+                        rb.AddRelativeForce(transform.right * DiveSpeed * 1);
+                        transform.eulerAngles = Vector3.forward * -90;
+                    }
+                    else
+                    {
+                        rb.AddRelativeForce(transform.right * DiveSpeed * -1);
+                        transform.eulerAngles = Vector3.forward * 90;
+                    }
+                 Invoke("stopdiving", 4);
+                }
+            }
+        }
+        else
+        {
+    //cancel dive
+        if (Gun && !rollTime)
+            {
+                playBonk = false;
+                rb.velocity /= 2;
+                StopDiving();
+            }
+            //Bonking 
+            if (Left && touchingGround)
+            {
+                hitWall = Physics2D.Raycast(transform.position, Vector2.left, 1f, GroundMask);
 
-        //        if (hitWall)
-        //        {
-        //            CancelInvoke("StopDiving");
-        //            rb.AddRelativeForce(transform.right * DiveSpeed / -4);
-        //            transform.eulerAngles = Vector3.forward * -90;
-        //            rollTime = true;
-        //            GetComponent<Animator>().SetTrigger("Bonked");
-        //            Invoke("StopDiving", 5);
-        //        }
-        //    }
-        //    else if (touchingGround)
-        //    {
-        //        hitWall = Physics2D.Raycast(transform.position, Vector2.right, 1f, GroundMask);
+               if (hitWall)
+                {
+                    CancelInvoke("StopDiving");
+                    rb.AddRelativeForce(transform.right * DiveSpeed / -4);
+                    transform.eulerAngles = Vector3.forward * -90;
+                    rollTime = true;
+                    GetComponent<Animator>().SetTrigger("Bonked");
+                    Invoke("StopDiving", 5);
+                }
+            }
+            else if (touchingGround)
+            {
+                hitWall = Physics2D.Raycast(transform.position, Vector2.right, 1f, GroundMask);
 
-        //        if (hitWall)
-        //        {
-        //            CancelInvoke("StopDiving");
-        //            rb.AddRelativeForce(transform.right * DiveSpeed / 4);
-        //            transform.eulerAngles = Vector3.forward * 90;
-        //            rollTime = true;
-        //            GetComponent<Animator>().SetTrigger("Bonked");
-        //            Invoke("StopDiving", 5);
-        //        }
-        //    }
-        //    else
-        //    {
+                if (hitWall)
+                {
+                    CancelInvoke("StopDiving");
+                    rb.AddRelativeForce(transform.right * DiveSpeed / 4);
+                    transform.eulerAngles = Vector3.forward * 90;
+                    rollTime = true;
+                    GetComponent<Animator>().SetTrigger("Bonked");
+                    Invoke("StopDiving", 5);
+                }
+            }
+            else
+            {
 
-        //    }
-      //  }
+            }
+        }
     }
     void FixedUpdate()
     {
@@ -254,58 +206,58 @@ public class PlayerBehavior : MonoBehaviour
         //Movement
         if (ableToMove)
         {
-            //if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)))
-            //{
-                
-            //}
-            ////Move right
-            //else if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && rb.velocity.x < 15)
-            //{
-            //    /*Vector2 newPosition = transform.position;
-            //    newPosition.x += Speed * Time.deltaTime;
-            //    transform.position = new Vector2(newPosition.x, newPosition.y);*/
-            //    GetComponent<Animator>().SetBool("Walking", true);
-            //    Left = false;
-            //    rb.AddRelativeForce(transform.right * Speed);
-            //    if (rb.velocity.x < 3)
-            //    {
-            //        rb.AddRelativeForce(transform.right * Speed);
-            //    }
-            //}
-            ////Move left
-            //else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && rb.velocity.x > -15)
-            //{
-            //    /*Vector2 newPosition = transform.position;
-            //    newPosition.x -= Speed * Time.deltaTime;
-            //    transform.position = new Vector2(newPosition.x, newPosition.y);*/
-            //    GetComponent<Animator>().SetBool("Walking", true);
-            //    Left = true;
-            //    rb.AddRelativeForce(transform.right * -Speed);
-            //    if (rb.velocity.x > -3)
-            //    {
-            //        rb.AddRelativeForce(transform.right * -Speed);
-            //    }
-            //}
-            //else
-            //{
-            //    Vector3 slowing = rb.velocity;
-            //    slowing.x /= SlowDown;
-            //    rb.velocity = slowing;
-            //    Invoke("StopTalking", 0.5f);
-            //}
-            ////Jumping action
-            //if (jumping)
-            //{
-            //    rb.AddForce(transform.up * Jump);
+        if (ControllerTest.instance.XMove > 0 && ControllerTest.instance.XMove < 0)
+        {
 
-            //    if (rb.velocity.y > Jump)
-            //    {
-            //        rb.velocity = rb.velocity.normalized * Jump;
-            //    }
-            //    jumping = false;
-            //    Invoke("StopJumping", 0.105f);
-            //}
         }
+        //Move right
+        else if (ControllerTest.instance.XMove > 0 && rb.velocity.x < 15)
+        {
+            /*Vector2 newPosition = transform.position;
+            newPosition.x += Speed * Time.deltaTime;
+            transform.position = new Vector2(newPosition.x, newPosition.y);*/
+            GetComponent<Animator>().SetBool("Walking", true);
+            Left = false;
+            rb.AddRelativeForce(transform.right * Speed);
+            if (rb.velocity.x < 3)
+            {
+                rb.AddRelativeForce(transform.right * Speed);
+            }
+        }
+        //Move left
+        else if (ControllerTest.instance.XMove < 0 && rb.velocity.x > -15)
+        {
+            /*Vector2 newPosition = transform.position;
+            newPosition.x -= Speed * Time.deltaTime;
+            transform.position = new Vector2(newPosition.x, newPosition.y);*/
+            GetComponent<Animator>().SetBool("Walking", true);
+            Left = true;
+            rb.AddRelativeForce(transform.right * -Speed);
+            if (rb.velocity.x > -3)
+            {
+                rb.AddRelativeForce(transform.right * -Speed);
+            }
+        }
+        else
+        {
+            Vector3 slowing = rb.velocity;
+            slowing.x /= SlowDown;
+            rb.velocity = slowing;
+            Invoke("StopTalking", 0.5f);
+        }
+        //Jumping action
+        if (jumping)
+        {
+            rb.AddForce(transform.up * Jump);
+
+            if (rb.velocity.y > Jump)
+            {
+                rb.velocity = rb.velocity.normalized * Jump;
+            }
+            jumping = false;
+            Invoke("StopJumping", 0.105f);
+        }
+    }
     }
     void StopDiving()
     {
