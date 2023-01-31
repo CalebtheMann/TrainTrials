@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,9 +10,11 @@ public class ControllerTest : MonoBehaviour
     public static ControllerTest instance;
     bool moving;
     bool jumping;
+    bool diving;
 
     public float XMove;
-    public bool YMove;
+    public float YMove;
+    public float DiveMove;
     private void Awake()
     {
         if (instance == null)
@@ -25,6 +28,7 @@ public class ControllerTest : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         input = new Controllers();
         input.Test.Jumping.performed += ctx => Jumping();
+        input.Test.Diving.performed += ctx => Diving();
         input.Test.MovementX.started += MovementX_started;
         input.Test.MovementX.canceled += MovementX_ended;
     }
@@ -40,8 +44,11 @@ public class ControllerTest : MonoBehaviour
 
     public void Jumping()
     {
-        Debug.Log("lol");
         jumping = true;
+    }
+    public void Diving()
+    {
+        diving = true;
     }
     private void OnEnable()
     {
@@ -50,6 +57,7 @@ public class ControllerTest : MonoBehaviour
     private void OnDisable()
     {
         input.Test.Jumping.performed -= ctx => Jumping();
+        input.Test.Diving.performed -= ctx => Diving();
         input.Test.MovementX.started -= MovementX_started;
         input.Test.MovementX.canceled -= MovementX_ended;
         input.Test.Disable();
@@ -63,10 +71,18 @@ public class ControllerTest : MonoBehaviour
             XMove = 0;
         }
         if(jumping){
-            YMove = input.Test.Jumping.ReadValue<bool>();
+            YMove = input.Test.Jumping.ReadValue<float>();
         }
         else{
-            YMove = false;
+            YMove = 0;
+        }
+        if (diving)
+        {
+            DiveMove = input.Test.Diving.ReadValue<float>();
+        }
+        else
+        {
+            DiveMove = 0;
         }
     }
 }

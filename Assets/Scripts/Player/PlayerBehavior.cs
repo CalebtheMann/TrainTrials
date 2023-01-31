@@ -20,7 +20,6 @@ public class PlayerBehavior : MonoBehaviour
     bool playBonk = false;
     bool onGround = false;
     bool touchingGround = false;
-    bool despairCooldown = true;
     public AudioClip Bonk;
     public AudioClip Whistle;
     public AudioSource AudioSauce;
@@ -115,13 +114,13 @@ public class PlayerBehavior : MonoBehaviour
         if (ableToMove)
         {
             //Jump, jump, jump, jump
-            if (ControllerTest.Jumping.performed && onGround && canJump)
+            if (ControllerTest.instance.YMove != 0 && onGround && canJump)
             {
                 jumping = true;
                 canJump = false;
                 GetComponent<Animator>().SetTrigger("Jumping");
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            if (ControllerTest.instance.DiveMove != 0)
             {
                 if (onGround)
                 {
@@ -132,7 +131,7 @@ public class PlayerBehavior : MonoBehaviour
                 //mid-air diving
                     ableToMove = false;
                     playBonk = true;
-                if (!Left)
+                    if (!Left)
                     {
                         rb.AddRelativeForce(transform.right * DiveSpeed * 1);
                         transform.eulerAngles = Vector3.forward * -90;
@@ -274,10 +273,6 @@ public class PlayerBehavior : MonoBehaviour
     void WhistlingAlong()
     {
         AudioSource.PlayClipAtPoint(Whistle, Camera.main.transform.position, 0.15f);
-    }
-    void CoolingOff()
-    {
-        despairCooldown = true;
     }
     void CarStart()
     {
