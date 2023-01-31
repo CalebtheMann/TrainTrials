@@ -24,7 +24,7 @@ public class ControllerTest : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         input = new Controllers();
-        input.Test.Pressing.performed += ctx => Pressing();
+        input.Test.Jumping.performed += ctx => Jumping();
         input.Test.MovementX.started += MovementX_started;
         input.Test.MovementX.canceled += MovementX_ended;
     }
@@ -38,7 +38,7 @@ public class ControllerTest : MonoBehaviour
         moving = false;
     }
 
-    public void Pressing()
+    public void Jumping()
     {
         Debug.Log("lol");
         jumping = true;
@@ -49,7 +49,7 @@ public class ControllerTest : MonoBehaviour
     }
     private void OnDisable()
     {
-        input.Test.Pressing.performed -= ctx => Pressing();
+        input.Test.Jumping.performed -= ctx => Jumping();
         input.Test.MovementX.started -= MovementX_started;
         input.Test.MovementX.canceled -= MovementX_ended;
         input.Test.Disable();
@@ -63,7 +63,10 @@ public class ControllerTest : MonoBehaviour
             XMove = 0;
         }
         if(jumping){
-            YMove = input.Test.
+            YMove = input.Test.Jumping.ReadValue<bool>();
+        }
+        else{
+            YMove = false;
         }
     }
 }

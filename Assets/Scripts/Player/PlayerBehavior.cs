@@ -115,7 +115,7 @@ public class PlayerBehavior : MonoBehaviour
         if (ableToMove)
         {
             //Jump, jump, jump, jump
-            if (ControllerTest.Pressing.performed && onGround && canJump)
+            if (ControllerTest.Jumping.performed && onGround && canJump)
             {
                 jumping = true;
                 canJump = false;
