@@ -8,8 +8,10 @@ public class ControllerTest : MonoBehaviour
     private Controllers input;
     public static ControllerTest instance;
     bool moving;
+    bool jumping;
 
-    public float XMove; 
+    public float XMove;
+    public bool YMove;
     private void Awake()
     {
         if (instance == null)
@@ -39,6 +41,7 @@ public class ControllerTest : MonoBehaviour
     public void Pressing()
     {
         Debug.Log("lol");
+        jumping = true;
     }
     private void OnEnable()
     {
@@ -58,6 +61,9 @@ public class ControllerTest : MonoBehaviour
             
         } else {
             XMove = 0;
+        }
+        if(jumping){
+            YMove = input.Test.
         }
     }
 }

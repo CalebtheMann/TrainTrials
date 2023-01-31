@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -49,10 +50,6 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-        Debug.Log(ControllerTest.instance.XMove);
-      
         if (touchingGround)
         {
             onGround = Physics2D.BoxCast(transform.position, new Vector2(.5f, .2f), 0, Vector2.down, 1, GroundMask);
@@ -118,7 +115,7 @@ public class PlayerBehavior : MonoBehaviour
         if (ableToMove)
         {
             //Jump, jump, jump, jump
-            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && onGround && canJump)
+            if (ControllerTest.Pressing.performed && onGround && canJump)
             {
                 jumping = true;
                 canJump = false;
@@ -213,9 +210,6 @@ public class PlayerBehavior : MonoBehaviour
         //Move right
         else if (ControllerTest.instance.XMove > 0 && rb.velocity.x < 15)
         {
-            /*Vector2 newPosition = transform.position;
-            newPosition.x += Speed * Time.deltaTime;
-            transform.position = new Vector2(newPosition.x, newPosition.y);*/
             GetComponent<Animator>().SetBool("Walking", true);
             Left = false;
             rb.AddRelativeForce(transform.right * Speed);
@@ -227,9 +221,6 @@ public class PlayerBehavior : MonoBehaviour
         //Move left
         else if (ControllerTest.instance.XMove < 0 && rb.velocity.x > -15)
         {
-            /*Vector2 newPosition = transform.position;
-            newPosition.x -= Speed * Time.deltaTime;
-            transform.position = new Vector2(newPosition.x, newPosition.y);*/
             GetComponent<Animator>().SetBool("Walking", true);
             Left = true;
             rb.AddRelativeForce(transform.right * -Speed);
