@@ -28,7 +28,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
             ""id"": ""6c116c22-c852-4aee-9a9f-fd677a77ef80"",
             ""actions"": [
                 {
-                    ""name"": ""Pressing"",
+                    ""name"": ""Jumping"",
                     ""type"": ""Button"",
                     ""id"": ""cc9e7c00-3acd-4de8-a034-de43e8f946cf"",
                     ""expectedControlType"": ""Button"",
@@ -44,6 +44,33 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Diving"",
+                    ""type"": ""Button"",
+                    ""id"": ""23333b89-f4b1-49c7-abeb-74216b2f82b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shooting"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc6de081-7a6f-4182-af39-4941283cbbc6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aiming"",
+                    ""type"": ""Value"",
+                    ""id"": ""4262cd71-cde8-411e-a7ac-aea4019a825d"",
+                    ""expectedControlType"": ""Stick"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -54,18 +81,18 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Pressing"",
+                    ""action"": ""Jumping"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""e39c53ac-3f87-4e75-8d04-23e362cf8444"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Pressing"",
+                    ""action"": ""Jumping"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -123,6 +150,160 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                     ""action"": ""MovementX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""74b60411-820d-464d-a4d7-c484955bd2c5"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementX"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""18da7a03-6780-4878-8f54-6258dca6f5fb"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""2d80249b-4f45-4afa-9cc6-2b0edf039f06"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65f531c0-60a5-414a-b280-e411cc2f1bb4"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jumping"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae728e73-0294-470f-894e-44d915291289"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jumping"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73fcb938-e972-46a6-9669-7096f082ba13"",
+                    ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jumping"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""104df697-855b-4d7d-a56c-89b2d02fd3de"",
+                    ""path"": ""<XInputController>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Diving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a0ca9f3-17cd-41dd-a822-c2216d24a723"",
+                    ""path"": ""<XInputController>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Diving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""063043f4-25d6-448f-b029-6d48cfeead6c"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Diving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""faa1ecf6-9d17-4b15-b1e9-2cfe46015b2e"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Diving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40cb8962-2918-40cb-bc71-d538a92d4b30"",
+                    ""path"": ""<XInputController>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb159946-2d43-40da-bfa6-0300ea0d4fc8"",
+                    ""path"": ""<XInputController>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c79143b2-a4a0-4bcf-b33b-b3e58426eeb1"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9920f2b-10f8-4edd-8f88-887d72eae9c3"",
+                    ""path"": ""<XInputController>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aiming"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -131,8 +312,11 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
 }");
         // Test
         m_Test = asset.FindActionMap("Test", throwIfNotFound: true);
-        m_Test_Pressing = m_Test.FindAction("Pressing", throwIfNotFound: true);
+        m_Test_Jumping = m_Test.FindAction("Jumping", throwIfNotFound: true);
         m_Test_MovementX = m_Test.FindAction("MovementX", throwIfNotFound: true);
+        m_Test_Diving = m_Test.FindAction("Diving", throwIfNotFound: true);
+        m_Test_Shooting = m_Test.FindAction("Shooting", throwIfNotFound: true);
+        m_Test_Aiming = m_Test.FindAction("Aiming", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -192,14 +376,20 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
     // Test
     private readonly InputActionMap m_Test;
     private ITestActions m_TestActionsCallbackInterface;
-    private readonly InputAction m_Test_Pressing;
+    private readonly InputAction m_Test_Jumping;
     private readonly InputAction m_Test_MovementX;
+    private readonly InputAction m_Test_Diving;
+    private readonly InputAction m_Test_Shooting;
+    private readonly InputAction m_Test_Aiming;
     public struct TestActions
     {
         private @Controllers m_Wrapper;
         public TestActions(@Controllers wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Pressing => m_Wrapper.m_Test_Pressing;
+        public InputAction @Jumping => m_Wrapper.m_Test_Jumping;
         public InputAction @MovementX => m_Wrapper.m_Test_MovementX;
+        public InputAction @Diving => m_Wrapper.m_Test_Diving;
+        public InputAction @Shooting => m_Wrapper.m_Test_Shooting;
+        public InputAction @Aiming => m_Wrapper.m_Test_Aiming;
         public InputActionMap Get() { return m_Wrapper.m_Test; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -209,29 +399,50 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_TestActionsCallbackInterface != null)
             {
-                @Pressing.started -= m_Wrapper.m_TestActionsCallbackInterface.OnPressing;
-                @Pressing.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnPressing;
-                @Pressing.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnPressing;
+                @Jumping.started -= m_Wrapper.m_TestActionsCallbackInterface.OnJumping;
+                @Jumping.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnJumping;
+                @Jumping.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnJumping;
                 @MovementX.started -= m_Wrapper.m_TestActionsCallbackInterface.OnMovementX;
                 @MovementX.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnMovementX;
                 @MovementX.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnMovementX;
+                @Diving.started -= m_Wrapper.m_TestActionsCallbackInterface.OnDiving;
+                @Diving.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnDiving;
+                @Diving.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnDiving;
+                @Shooting.started -= m_Wrapper.m_TestActionsCallbackInterface.OnShooting;
+                @Shooting.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnShooting;
+                @Shooting.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnShooting;
+                @Aiming.started -= m_Wrapper.m_TestActionsCallbackInterface.OnAiming;
+                @Aiming.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnAiming;
+                @Aiming.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnAiming;
             }
             m_Wrapper.m_TestActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Pressing.started += instance.OnPressing;
-                @Pressing.performed += instance.OnPressing;
-                @Pressing.canceled += instance.OnPressing;
+                @Jumping.started += instance.OnJumping;
+                @Jumping.performed += instance.OnJumping;
+                @Jumping.canceled += instance.OnJumping;
                 @MovementX.started += instance.OnMovementX;
                 @MovementX.performed += instance.OnMovementX;
                 @MovementX.canceled += instance.OnMovementX;
+                @Diving.started += instance.OnDiving;
+                @Diving.performed += instance.OnDiving;
+                @Diving.canceled += instance.OnDiving;
+                @Shooting.started += instance.OnShooting;
+                @Shooting.performed += instance.OnShooting;
+                @Shooting.canceled += instance.OnShooting;
+                @Aiming.started += instance.OnAiming;
+                @Aiming.performed += instance.OnAiming;
+                @Aiming.canceled += instance.OnAiming;
             }
         }
     }
     public TestActions @Test => new TestActions(this);
     public interface ITestActions
     {
-        void OnPressing(InputAction.CallbackContext context);
+        void OnJumping(InputAction.CallbackContext context);
         void OnMovementX(InputAction.CallbackContext context);
+        void OnDiving(InputAction.CallbackContext context);
+        void OnShooting(InputAction.CallbackContext context);
+        void OnAiming(InputAction.CallbackContext context);
     }
 }
