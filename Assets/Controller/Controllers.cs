@@ -208,6 +208,17 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""73fcb938-e972-46a6-9669-7096f082ba13"",
+                    ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jumping"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""104df697-855b-4d7d-a56c-89b2d02fd3de"",
                     ""path"": ""<XInputController>/leftTrigger"",
                     ""interactions"": """",

@@ -33,20 +33,17 @@ public class PlayerBehavior : MonoBehaviour
     public bool Gun = false;
     GameObject gunArm;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = rb.GetComponent<SpriteRenderer>();
         controller = GameObject.Find("GameController").GetComponent<GameController>();
         textUpdate = GameObject.Find("CameraController").GetComponent<TextKeeper>();
-        Despair = GameObject.Find("Despair");
         gunArm = GameObject.Find("Gun");
         AudioSauce = GetComponent<AudioSource>();
         CarStart();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (touchingGround)
@@ -280,8 +277,6 @@ public class PlayerBehavior : MonoBehaviour
         Screen.GetComponent<Animator>().SetBool("Blacked Out", false);
         textUpdate.TimerReset();
         gunArm.SetActive(false);
-        //AudioSource.PlayClipAtPoint(Whistle, Camera.main.transform.position);
-        //AudioSauce.PlayOneShot(Whistle);
         Invoke("WhistlingAlong", 0.01f);
         Invoke("WhistlingAlong", 0.51f);
         switch (controller.CurrentCar)
@@ -289,10 +284,10 @@ public class PlayerBehavior : MonoBehaviour
             case 0:
                 Gun = false;
                 GetComponent<Animator>().SetBool("Gunless", true);
-                transform.position = new Vector2(216, -2);
+                //transform.position = new Vector2(216, -2);
                 //transform.position = new Vector2(370, -2);
                 //transform.position = new Vector2(424, -2);
-                //transform.position = new Vector2(494, -2);
+                transform.position = new Vector2(494, -2);
                 break;
             case 1:
                 Gun = false;
