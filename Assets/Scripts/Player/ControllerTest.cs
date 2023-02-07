@@ -9,9 +9,12 @@ public class ControllerTest : MonoBehaviour
     private Controllers input;
     public static ControllerTest instance;
     bool moving;
+    bool aiming;
     bool jumping;
     bool diving;
 
+    public bool IsAiming;
+    public Vector2 AimDirection;
     public float XMove;
     public float YMove;
     public float DiveMove;
@@ -31,6 +34,8 @@ public class ControllerTest : MonoBehaviour
         input.Test.Diving.performed += ctx => Diving();
         input.Test.MovementX.started += MovementX_started;
         input.Test.MovementX.canceled += MovementX_ended;
+        input.Test.StartAiming.started += Aiming_started;
+        input.Test.StartAiming.canceled += Aiming_ended;
     }
 
     private void MovementX_started(InputAction.CallbackContext obj)
@@ -40,6 +45,14 @@ public class ControllerTest : MonoBehaviour
     private void MovementX_ended(InputAction.CallbackContext obj)
     {
         moving = false;
+    }
+    private void Aiming_started(InputAction.CallbackContext obj)
+    {
+        IsAiming = true;
+    }
+    private void Aiming_ended(InputAction.CallbackContext obj)
+    {
+        IsAiming = false;
     }
 
     public void Jumping()
@@ -60,6 +73,8 @@ public class ControllerTest : MonoBehaviour
         input.Test.Diving.performed -= ctx => Diving();
         input.Test.MovementX.started -= MovementX_started;
         input.Test.MovementX.canceled -= MovementX_ended;
+        input.Test.StartAiming.started -= Aiming_started;
+        input.Test.StartAiming.canceled -= Aiming_ended;
         input.Test.Disable();
     }
     private void Update()
@@ -84,5 +99,9 @@ public class ControllerTest : MonoBehaviour
         {
             DiveMove = 0;
         }
+        if (IsAiming)
+        {
+           // AimDirection = input.Test.Aiming.ReadValue<Vector2>();
+        } 
     }
 }

@@ -282,7 +282,7 @@ public class PlayerBehavior : MonoBehaviour
         switch (controller.CurrentCar)
         {
             case 0:
-                Gun = false;
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", true);
                 //transform.position = new Vector2(216, -2);
                 //transform.position = new Vector2(370, -2);
@@ -290,7 +290,7 @@ public class PlayerBehavior : MonoBehaviour
                 transform.position = new Vector2(494, -2);
                 break;
             case 1:
-                Gun = false;
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", true);
                 transform.position = new Vector2(292, -2);
                 break;

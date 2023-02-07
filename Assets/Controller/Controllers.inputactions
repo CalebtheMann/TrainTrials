@@ -43,9 +43,18 @@
                 },
                 {
                     "name": "Aiming",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "4262cd71-cde8-411e-a7ac-aea4019a825d",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "StartAiming",
+                    "type": "Value",
+                    "id": "03de5b10-c263-4c80-ac60-87115513447d",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -280,6 +289,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Aiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15183e61-9b5b-4667-8e12-72c3cf41f2d2",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartAiming",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

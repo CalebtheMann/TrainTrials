@@ -65,9 +65,18 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Aiming"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""4262cd71-cde8-411e-a7ac-aea4019a825d"",
-                    ""expectedControlType"": ""Stick"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""StartAiming"",
+                    ""type"": ""Value"",
+                    ""id"": ""03de5b10-c263-4c80-ac60-87115513447d"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -304,6 +313,17 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                     ""action"": ""Aiming"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15183e61-9b5b-4667-8e12-72c3cf41f2d2"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartAiming"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -317,6 +337,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
         m_Test_Diving = m_Test.FindAction("Diving", throwIfNotFound: true);
         m_Test_Shooting = m_Test.FindAction("Shooting", throwIfNotFound: true);
         m_Test_Aiming = m_Test.FindAction("Aiming", throwIfNotFound: true);
+        m_Test_StartAiming = m_Test.FindAction("StartAiming", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -381,6 +402,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
     private readonly InputAction m_Test_Diving;
     private readonly InputAction m_Test_Shooting;
     private readonly InputAction m_Test_Aiming;
+    private readonly InputAction m_Test_StartAiming;
     public struct TestActions
     {
         private @Controllers m_Wrapper;
@@ -390,6 +412,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
         public InputAction @Diving => m_Wrapper.m_Test_Diving;
         public InputAction @Shooting => m_Wrapper.m_Test_Shooting;
         public InputAction @Aiming => m_Wrapper.m_Test_Aiming;
+        public InputAction @StartAiming => m_Wrapper.m_Test_StartAiming;
         public InputActionMap Get() { return m_Wrapper.m_Test; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -414,6 +437,9 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 @Aiming.started -= m_Wrapper.m_TestActionsCallbackInterface.OnAiming;
                 @Aiming.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnAiming;
                 @Aiming.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnAiming;
+                @StartAiming.started -= m_Wrapper.m_TestActionsCallbackInterface.OnStartAiming;
+                @StartAiming.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnStartAiming;
+                @StartAiming.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnStartAiming;
             }
             m_Wrapper.m_TestActionsCallbackInterface = instance;
             if (instance != null)
@@ -433,6 +459,9 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 @Aiming.started += instance.OnAiming;
                 @Aiming.performed += instance.OnAiming;
                 @Aiming.canceled += instance.OnAiming;
+                @StartAiming.started += instance.OnStartAiming;
+                @StartAiming.performed += instance.OnStartAiming;
+                @StartAiming.canceled += instance.OnStartAiming;
             }
         }
     }
@@ -444,5 +473,6 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
         void OnDiving(InputAction.CallbackContext context);
         void OnShooting(InputAction.CallbackContext context);
         void OnAiming(InputAction.CallbackContext context);
+        void OnStartAiming(InputAction.CallbackContext context);
     }
 }

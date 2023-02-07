@@ -42,8 +42,9 @@ public class GunBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        float pew = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
+        //Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        
+        float pew = Mathf.Atan2(ControllerTest.instance.AimDirection.y, ControllerTest.instance.AimDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, pew);
 
         if (Input.GetKey(KeyCode.Mouse0) && canFire == true)
