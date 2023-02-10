@@ -70,29 +70,29 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        ////Pause
-        //if (Input.GetKey(KeyCode.P))
-        //{
-        //    if (Paused)
-        //    {
-        //        Paused = false;
-        //    }
-        //    else
-        //    {
-        //        Paused = true;
-        //    }
-        //}
-        ////Restart
-        //if (Input.GetKey(KeyCode.R))
-        //{
-        //    SceneManager.LoadScene("BetaCars");
-        //}
+        //Pause
+        /*if (Input.GetKey(KeyCode.P))
+        {
+            if (Paused)
+            {
+                Paused = false;
+            }
+            else
+            {
+                Paused = true;
+            }
+        }*/
+        //Restart
+        if (ControllerTest.instance.Reset != 0)
+        {
+            SceneManager.LoadScene("BetaCars");
+        }
 
-        ////Escape
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    SceneManager.LoadScene("Menu");
-        //}
+        //Escape
+        /*if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+        }*/
     }
     public void UsingGUN()
     {

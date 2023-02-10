@@ -80,13 +80,31 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Reseting"",
+                    ""type"": ""Button"",
+                    ""id"": ""9da2df51-1a40-4355-a969-578c6748db7f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EndGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""085e8c25-f037-4f15-b6c8-00f00f0ff802"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""63e66816-60b7-407a-bd8b-afb37fc28b54"",
-                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -218,7 +236,29 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""73fcb938-e972-46a6-9669-7096f082ba13"",
-                    ""path"": ""<XInputController>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jumping"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78cf54ce-2d5a-44bb-b33b-341008e90c2a"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jumping"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8bf4a6ae-103f-4560-b578-f55617f5257b"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -229,7 +269,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""104df697-855b-4d7d-a56c-89b2d02fd3de"",
-                    ""path"": ""<XInputController>/leftTrigger"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -240,7 +280,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6a0ca9f3-17cd-41dd-a822-c2216d24a723"",
-                    ""path"": ""<XInputController>/leftShoulder"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -273,7 +313,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""40cb8962-2918-40cb-bc71-d538a92d4b30"",
-                    ""path"": ""<XInputController>/rightTrigger"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -284,7 +324,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""bb159946-2d43-40da-bfa6-0300ea0d4fc8"",
-                    ""path"": ""<XInputController>/rightShoulder"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -306,7 +346,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e9920f2b-10f8-4edd-8f88-887d72eae9c3"",
-                    ""path"": ""<XInputController>/rightStick"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -324,6 +364,28 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                     ""action"": ""StartAiming"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a404aac9-da71-4130-b54b-ad65c6cdd5c0"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reseting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""801ba123-6820-408c-9414-e613b468b948"",
+                    ""path"": ""<Keyboard>/f3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EndGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -338,6 +400,8 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
         m_Test_Shooting = m_Test.FindAction("Shooting", throwIfNotFound: true);
         m_Test_Aiming = m_Test.FindAction("Aiming", throwIfNotFound: true);
         m_Test_StartAiming = m_Test.FindAction("StartAiming", throwIfNotFound: true);
+        m_Test_Reseting = m_Test.FindAction("Reseting", throwIfNotFound: true);
+        m_Test_EndGame = m_Test.FindAction("EndGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -403,6 +467,8 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
     private readonly InputAction m_Test_Shooting;
     private readonly InputAction m_Test_Aiming;
     private readonly InputAction m_Test_StartAiming;
+    private readonly InputAction m_Test_Reseting;
+    private readonly InputAction m_Test_EndGame;
     public struct TestActions
     {
         private @Controllers m_Wrapper;
@@ -413,6 +479,8 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
         public InputAction @Shooting => m_Wrapper.m_Test_Shooting;
         public InputAction @Aiming => m_Wrapper.m_Test_Aiming;
         public InputAction @StartAiming => m_Wrapper.m_Test_StartAiming;
+        public InputAction @Reseting => m_Wrapper.m_Test_Reseting;
+        public InputAction @EndGame => m_Wrapper.m_Test_EndGame;
         public InputActionMap Get() { return m_Wrapper.m_Test; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -440,6 +508,12 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 @StartAiming.started -= m_Wrapper.m_TestActionsCallbackInterface.OnStartAiming;
                 @StartAiming.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnStartAiming;
                 @StartAiming.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnStartAiming;
+                @Reseting.started -= m_Wrapper.m_TestActionsCallbackInterface.OnReseting;
+                @Reseting.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnReseting;
+                @Reseting.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnReseting;
+                @EndGame.started -= m_Wrapper.m_TestActionsCallbackInterface.OnEndGame;
+                @EndGame.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnEndGame;
+                @EndGame.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnEndGame;
             }
             m_Wrapper.m_TestActionsCallbackInterface = instance;
             if (instance != null)
@@ -462,6 +536,12 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 @StartAiming.started += instance.OnStartAiming;
                 @StartAiming.performed += instance.OnStartAiming;
                 @StartAiming.canceled += instance.OnStartAiming;
+                @Reseting.started += instance.OnReseting;
+                @Reseting.performed += instance.OnReseting;
+                @Reseting.canceled += instance.OnReseting;
+                @EndGame.started += instance.OnEndGame;
+                @EndGame.performed += instance.OnEndGame;
+                @EndGame.canceled += instance.OnEndGame;
             }
         }
     }
@@ -474,5 +554,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
         void OnShooting(InputAction.CallbackContext context);
         void OnAiming(InputAction.CallbackContext context);
         void OnStartAiming(InputAction.CallbackContext context);
+        void OnReseting(InputAction.CallbackContext context);
+        void OnEndGame(InputAction.CallbackContext context);
     }
 }

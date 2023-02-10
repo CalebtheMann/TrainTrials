@@ -28,7 +28,6 @@ public class GunBehavior : MonoBehaviour
         if (player.Left)
         {
             sr.flipY = true;
-
             Vector2 handChange = transform.position;
             transform.position = new Vector2(player.transform.position.x + .26f, player.transform.position.y - .3f);
         }

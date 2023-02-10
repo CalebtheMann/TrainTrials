@@ -9,10 +9,10 @@ public class ControllerTest : MonoBehaviour
     private Controllers input;
     public static ControllerTest instance;
     bool moving;
-    bool aiming;
     bool jumping;
     bool diving;
     bool shooting;
+    bool reseting;
 
     public bool IsAiming;
     public Vector2 AimDirection;
@@ -20,13 +20,14 @@ public class ControllerTest : MonoBehaviour
     public float YMove;
     public float DiveMove;
     public float GunShot;
+    public float Reset;
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
-        else 
+        else
         {
             Destroy(gameObject);
         }
@@ -34,7 +35,8 @@ public class ControllerTest : MonoBehaviour
         input = new Controllers();
         input.Test.Jumping.performed += ctx => Jumping();
         input.Test.Diving.performed += ctx => Diving();
-        input.Test.Jumping.performed += ctx => Shooting();
+        input.Test.Shooting.performed += ctx => Shooting();
+        input.Test.Reseting.performed += ctx => Reseting();
         input.Test.MovementX.started += MovementX_started;
         input.Test.MovementX.canceled += MovementX_ended;
         input.Test.StartAiming.started += Aiming_started;
@@ -69,6 +71,10 @@ public class ControllerTest : MonoBehaviour
     {
         shooting = true;
     }
+    public void Reseting()
+    {
+        reseting = true;
+    }
     private void OnEnable()
     {
         input.Test.Enable();
@@ -77,6 +83,8 @@ public class ControllerTest : MonoBehaviour
     {
         input.Test.Jumping.performed -= ctx => Jumping();
         input.Test.Diving.performed -= ctx => Diving();
+        input.Test.Shooting.performed -= ctx => Shooting();
+        input.Test.Reseting.performed -= ctx => Reseting();
         input.Test.MovementX.started -= MovementX_started;
         input.Test.MovementX.canceled -= MovementX_ended;
         input.Test.StartAiming.started -= Aiming_started;
@@ -85,16 +93,16 @@ public class ControllerTest : MonoBehaviour
     }
     private void Update()
     {
-        if(moving){
-            XMove = input.Test.MovementX.ReadValue<float>();
-            
+        if(moving)
+        {
+            XMove = input.Test.MovementX.ReadValue<float>();    
         } else {
             XMove = 0;
         }
-        if(jumping){
+        if(jumping)
+        {
             YMove = input.Test.Jumping.ReadValue<float>();
-        }
-        else{
+        } else {
             YMove = 0;
         }
         if (diving)
@@ -112,6 +120,14 @@ public class ControllerTest : MonoBehaviour
         else
         {
             GunShot = 0;
+        }
+        if (reseting)
+        {
+            Reset = input.Test.Reseting.ReadValue<float>();
+        }
+        else
+        {
+            Reset = 0;
         }
         if (IsAiming)
         {

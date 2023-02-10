@@ -295,7 +295,7 @@ public class PlayerBehavior : MonoBehaviour
                 transform.position = new Vector2(292, -2);
                 break;
             case 2:
-                Gun = false;
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", true);
                 transform.position = new Vector2(370, -2);
                 break;
@@ -310,7 +310,7 @@ public class PlayerBehavior : MonoBehaviour
                 transform.position = new Vector2(494, -2);
                 break;
             case 5:
-                Gun = false;
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", true);
                 transform.position = new Vector2(0, -2);
                 break;
