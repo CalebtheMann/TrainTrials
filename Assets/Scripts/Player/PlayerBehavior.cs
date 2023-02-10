@@ -144,45 +144,40 @@ public class PlayerBehavior : MonoBehaviour
         }
         else
         {
-    //cancel dive
-        if (Gun && !rollTime)
+        //cancel dive
+            if (ControllerTest.instance.DiveMove != 0 && onGround && !canJump && !rollTime)
             {
                 playBonk = false;
                 rb.velocity /= 2;
                 StopDiving();
             }
-            //Bonking 
+        //Bonking 
             if (Left && touchingGround)
             {
                 hitWall = Physics2D.Raycast(transform.position, Vector2.left, 1f, GroundMask);
 
-               if (hitWall)
+                if (hitWall)
                 {
-                    CancelInvoke("StopDiving");
-                    rb.AddRelativeForce(transform.right * DiveSpeed / -4);
-                    transform.eulerAngles = Vector3.forward * -90;
-                    rollTime = true;
-                    GetComponent<Animator>().SetTrigger("Bonked");
-                    Invoke("StopDiving", 5);
+                        CancelInvoke("StopDiving");
+                        rb.AddRelativeForce(transform.right * DiveSpeed / -4);
+                        transform.eulerAngles = Vector3.forward * -90;
+                        rollTime = true;
+                        GetComponent<Animator>().SetTrigger("Bonked");
+                        Invoke("StopDiving", 5);
                 }
             }
             else if (touchingGround)
             {
                 hitWall = Physics2D.Raycast(transform.position, Vector2.right, 1f, GroundMask);
-
                 if (hitWall)
                 {
-                    CancelInvoke("StopDiving");
-                    rb.AddRelativeForce(transform.right * DiveSpeed / 4);
-                    transform.eulerAngles = Vector3.forward * 90;
-                    rollTime = true;
-                    GetComponent<Animator>().SetTrigger("Bonked");
-                    Invoke("StopDiving", 5);
+                     CancelInvoke("StopDiving");
+                     rb.AddRelativeForce(transform.right * DiveSpeed / 4);
+                     transform.eulerAngles = Vector3.forward * 90;
+                     rollTime = true;
+                     GetComponent<Animator>().SetTrigger("Bonked");
+                     Invoke("StopDiving", 5);
                 }
-            }
-            else
-            {
-
             }
         }
     }
@@ -248,7 +243,7 @@ public class PlayerBehavior : MonoBehaviour
     }
     void StopDiving()
     {
-        if(!ableToMove)
+        if(true)
         {
             ableToMove = true;
             transform.eulerAngles = Vector3.forward * 0;
