@@ -47,7 +47,7 @@ public class GunBehavior : MonoBehaviour
         float pew = Mathf.Atan2(ControllerTest.instance.AimDirection.y, ControllerTest.instance.AimDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, pew);
 
-        if (Input.GetKey(KeyCode.Mouse0) && canFire == true)
+        if (ControllerTest.instance.GunShot != 0 && canFire == true)
         {
             if(spawnedBullet)
             {
