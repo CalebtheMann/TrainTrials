@@ -49,6 +49,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Deep Background
+    uniqueID: 3619040791
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
