@@ -7,7 +7,7 @@ public class ButtonBehavior : MonoBehaviour
 {
     public bool Pressed = false;
     bool pressing = true;
-    public int TimeHeldDown = 5;
+    public int TimeHeldDown = 1;
     // Start is called before the first frame update
     void Start()
     {

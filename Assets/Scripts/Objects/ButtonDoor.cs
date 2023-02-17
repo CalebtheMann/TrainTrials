@@ -25,16 +25,16 @@ public class ButtonDoor : MonoBehaviour
         {
             rise = false;
         }
-        if (rise && transform.position.y < startingPosition.y + 8)
+        if (rise && transform.position.y < startingPosition.y + 4)
         {
             Vector2 newPosition = transform.position;
-            newPosition.y += 1.5f * Time.deltaTime;
+            newPosition.y += 8 * Time.deltaTime;
             transform.position = new Vector2(newPosition.x, newPosition.y);
         }
         else if (transform.position.y > startingPosition.y)
         {
             Vector2 newPosition = transform.position;
-            newPosition.y -= .75f * Time.deltaTime;
+            newPosition.y -= 8 * Time.deltaTime;
             transform.position = new Vector2(newPosition.x, newPosition.y);
         }
     }
