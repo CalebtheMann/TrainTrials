@@ -10887,6 +10887,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &494540170 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7495732076510600195, guid: d6dcc38bcf8e7ca449c38763e1102c30, type: 3}
+  m_PrefabInstance: {fileID: 7495732077378227732}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d63f5c4552c85754bbf3b357e08362c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &494746638
 GameObject:
   m_ObjectHideFlags: 0
@@ -47823,6 +47834,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6817611662597015366, guid: 81efca2f94c96744ea14bfefa0e79792, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 494540170}
     - target: {fileID: 6817611662597015367, guid: 81efca2f94c96744ea14bfefa0e79792, type: 3}
       propertyPath: m_Name
       value: TestDog
