@@ -15,6 +15,7 @@ TagManager:
   - Boxer
   - Bouncer
   - Girder
+  - Rope
   layers:
   - Default
   - TransparentFX

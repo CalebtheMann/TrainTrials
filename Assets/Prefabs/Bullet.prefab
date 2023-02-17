@@ -153,6 +153,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   Rip: {fileID: 8300000, guid: 00faccd0e2868494f9347291ba9da40f, type: 3}
+  Crate: {fileID: 6493226976809438847, guid: c25ae1d80f3caa44ca0fda78b1cf2b96, type: 3}
 --- !u!82 &261533707
 AudioSource:
   m_ObjectHideFlags: 0

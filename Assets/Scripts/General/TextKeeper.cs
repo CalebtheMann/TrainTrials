@@ -27,7 +27,7 @@ public class TextKeeper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        controller.TimerTime += Time.deltaTime;
+        /* controller.TimerTime += Time.deltaTime;
         minutes = Mathf.FloorToInt(controller.TimerTime / 60);
         seconds = Mathf.FloorToInt(controller.TimerTime % 60);
         if (seconds < 10)
@@ -45,7 +45,7 @@ public class TextKeeper : MonoBehaviour
         else
             {
             GunTutorial.gameObject.SetActive(false);
-            }
+            } */
     }
 
     public void TimerReset()
@@ -151,7 +151,7 @@ public class TextKeeper : MonoBehaviour
 
         }
     }
-    public void DeathScreen()
+   /* public void DeathScreen()
     {
         Death.gameObject.SetActive(true);
         Death2.gameObject.SetActive(true);
@@ -160,5 +160,5 @@ public class TextKeeper : MonoBehaviour
     {
         Death.gameObject.SetActive(false);
         Death2.gameObject.SetActive(false);
-    }
+    } */
 }

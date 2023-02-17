@@ -268,7 +268,7 @@ public class PlayerBehavior : MonoBehaviour
     }
     void CarStart()
     {
-        textUpdate.DeathScreenDeath();
+        //textUpdate.DeathScreenDeath();
         Screen.GetComponent<Animator>().SetBool("Blacked Out", false);
         textUpdate.TimerReset();
         gunArm.SetActive(false);

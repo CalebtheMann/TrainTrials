@@ -7,6 +7,7 @@ public class BulletBehavior : MonoBehaviour
     private Rigidbody2D rb;
     SpriteRenderer sr;
     public AudioClip Rip;
+    public GameObject Crate;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,11 @@ public class BulletBehavior : MonoBehaviour
         if (collision.gameObject.tag =="Enemy" || collision.gameObject.tag =="Destroyer")
         {
             Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Rope")
+        {
+            Crate.GetComponent<Rigidbody2D>().gravityScale += 1;
         }
     }
 }
