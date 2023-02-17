@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class ControllerTest : MonoBehaviour
 {
+    public PlayerBehavior Player;
+
     private Controllers input;
     public static ControllerTest instance;
     bool moving;
@@ -13,6 +15,8 @@ public class ControllerTest : MonoBehaviour
     bool diving;
     bool shooting;
     bool reseting;
+
+    private Coroutine DiveCooldownInstance;
 
     public bool IsAiming;
     public Vector2 AimDirection;
@@ -66,6 +70,10 @@ public class ControllerTest : MonoBehaviour
     public void Diving()
     {
         diving = true;
+        if (DiveCooldownInstance == null)
+        {
+            DiveCooldownInstance = StartCoroutine(DiveCooldown());
+        }
     }
     public void Shooting()
     {
@@ -105,14 +113,6 @@ public class ControllerTest : MonoBehaviour
         } else {
             YMove = 0;
         }
-        if (diving)
-        {
-            DiveMove = input.Test.Diving.ReadValue<float>();
-        }
-        else
-        {
-            DiveMove = 0;
-        }
         if (shooting)
         {
             GunShot = input.Test.Shooting.ReadValue<float>();
@@ -133,5 +133,17 @@ public class ControllerTest : MonoBehaviour
         {
            AimDirection = input.Test.Aiming.ReadValue<Vector2>();
         } 
+    }
+    public IEnumerator DiveCooldown()
+    {
+        Player.Dive();
+        float Timer = 5f;
+        while (Timer > 0)
+        {
+            print("Timer");
+            Timer -= Time.deltaTime;
+            yield return null;
+        }
+        DiveCooldownInstance = null;
     }
 }

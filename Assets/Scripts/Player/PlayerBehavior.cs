@@ -9,10 +9,8 @@ public class PlayerBehavior : MonoBehaviour
     public float SlowDown;
     public LayerMask GroundMask;
     public LayerMask GirderMask;
-    public LayerMask DespairMask;
     bool ableToMove = true;
     public bool Left = false;
-    public bool DespairMode = false;
     bool jumping = false;
     bool canJump = true;
     bool hitWall = false;
@@ -119,11 +117,7 @@ public class PlayerBehavior : MonoBehaviour
             }
             if (ControllerTest.instance.DiveMove != 0)
             {
-                if (onGround)
-                {
-                    //Ducking movement would happen here
-                }
-                else
+                if (!onGround)
                 {
                 //mid-air diving
                     ableToMove = false;
@@ -138,7 +132,7 @@ public class PlayerBehavior : MonoBehaviour
                         rb.AddRelativeForce(transform.right * DiveSpeed * -1);
                         transform.eulerAngles = Vector3.forward * 90;
                     }
-                 Invoke("stopdiving", 4);
+                 Invoke("StopDiving", 4);
                 }
             }
         }
@@ -158,12 +152,12 @@ public class PlayerBehavior : MonoBehaviour
 
                 if (hitWall)
                 {
-                        CancelInvoke("StopDiving");
-                        rb.AddRelativeForce(transform.right * DiveSpeed / -4);
-                        transform.eulerAngles = Vector3.forward * -90;
-                        rollTime = true;
-                        GetComponent<Animator>().SetTrigger("Bonked");
-                        Invoke("StopDiving", 5);
+                    CancelInvoke("StopDiving");
+                    rb.AddRelativeForce(transform.right * DiveSpeed / -4);
+                    transform.eulerAngles = Vector3.forward * -90;
+                    rollTime = true;
+                    GetComponent<Animator>().SetTrigger("Bonked");
+                    Invoke("StopDiving", 5);
                 }
             }
             else if (touchingGround)
@@ -171,12 +165,12 @@ public class PlayerBehavior : MonoBehaviour
                 hitWall = Physics2D.Raycast(transform.position, Vector2.right, 1f, GroundMask);
                 if (hitWall)
                 {
-                     CancelInvoke("StopDiving");
-                     rb.AddRelativeForce(transform.right * DiveSpeed / 4);
-                     transform.eulerAngles = Vector3.forward * 90;
-                     rollTime = true;
-                     GetComponent<Animator>().SetTrigger("Bonked");
-                     Invoke("StopDiving", 5);
+                    CancelInvoke("StopDiving");
+                    rb.AddRelativeForce(transform.right * DiveSpeed / 4);
+                    transform.eulerAngles = Vector3.forward * 90;
+                    rollTime = true;
+                    GetComponent<Animator>().SetTrigger("Bonked");
+                    Invoke("StopDiving", 5);
                 }
             }
         }
@@ -185,7 +179,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (rb.velocity.x > 25)
         {
-            rb.velocity = new Vector2 (rb.velocity.x - 1, rb.velocity.y);
+            rb.velocity = new Vector2(rb.velocity.x - 1, rb.velocity.y);
         }
         if (rb.velocity.x < -25)
         {
@@ -194,53 +188,75 @@ public class PlayerBehavior : MonoBehaviour
         //Movement
         if (ableToMove)
         {
-        if (ControllerTest.instance.XMove > 0 && ControllerTest.instance.XMove < 0)
-        {
-
-        }
-        //Move right
-        else if (ControllerTest.instance.XMove > 0 && rb.velocity.x < 15)
-        {
-            GetComponent<Animator>().SetBool("Walking", true);
-            Left = false;
-            rb.AddRelativeForce(transform.right * Speed);
-            if (rb.velocity.x < 3)
+            if (ControllerTest.instance.XMove > 0 && ControllerTest.instance.XMove < 0)
             {
+
+            }
+            //Move right
+            else if (ControllerTest.instance.XMove > 0 && rb.velocity.x < 15)
+            {
+                GetComponent<Animator>().SetBool("Walking", true);
+                Left = false;
                 rb.AddRelativeForce(transform.right * Speed);
+                if (rb.velocity.x < 3)
+                {
+                    rb.AddRelativeForce(transform.right * Speed);
+                }
             }
-        }
-        //Move left
-        else if (ControllerTest.instance.XMove < 0 && rb.velocity.x > -15)
-        {
-            GetComponent<Animator>().SetBool("Walking", true);
-            Left = true;
-            rb.AddRelativeForce(transform.right * -Speed);
-            if (rb.velocity.x > -3)
+            //Move left
+            else if (ControllerTest.instance.XMove < 0 && rb.velocity.x > -15)
             {
+                GetComponent<Animator>().SetBool("Walking", true);
+                Left = true;
                 rb.AddRelativeForce(transform.right * -Speed);
+                if (rb.velocity.x > -3)
+                {
+                    rb.AddRelativeForce(transform.right * -Speed);
+                }
             }
-        }
-        else
-        {
-            Vector3 slowing = rb.velocity;
-            slowing.x /= SlowDown;
-            rb.velocity = slowing;
-            Invoke("StopTalking", 0.5f);
-        }
-        //Jumping action
-        if (jumping)
-        {
-            rb.AddForce(transform.up * Jump);
-
-            if (rb.velocity.y > Jump)
+            else
             {
-                rb.velocity = rb.velocity.normalized * Jump;
+                Vector3 slowing = rb.velocity;
+                slowing.x /= SlowDown;
+                rb.velocity = slowing;
+                Invoke("StopTalking", 0.5f);
             }
-            jumping = false;
-            Invoke("StopJumping", 0.105f);
+            //Jumping action
+            if (jumping)
+            {
+                rb.AddForce(transform.up * Jump);
+
+                if (rb.velocity.y > Jump)
+                {
+                    rb.velocity = rb.velocity.normalized * Jump;
+                }
+                jumping = false;
+                Invoke("StopJumping", 0.105f);
+            }
         }
     }
+
+    public void Dive()
+    {
+        if (ableToMove && !onGround)
+        {
+                //mid-air diving
+            ableToMove = false;
+            playBonk = true;
+            if (!Left)
+            {
+                rb.AddRelativeForce(transform.right * DiveSpeed * 1);
+                transform.eulerAngles = Vector3.forward * -90;
+            }
+            else
+            {
+                rb.AddRelativeForce(transform.right * DiveSpeed * -1);
+                transform.eulerAngles = Vector3.forward * 90;
+            }
+            Invoke("StopDiving", 4);
+        }
     }
+
     void StopDiving()
     {
         if(true)
@@ -365,7 +381,6 @@ public class PlayerBehavior : MonoBehaviour
             }
             controller.CurrentCar = controller.CurrentCar + 1;
             print(controller.CurrentCar);
-            textUpdate.LevelUpdate();
             textUpdate.BestTime();
             rb.velocity = Vector2.zero;
             this.enabled = false;
@@ -380,7 +395,6 @@ public class PlayerBehavior : MonoBehaviour
             ScreenDeath();
             controller.CurrentCar = controller.CurrentCar + 1;
             print(controller.CurrentCar);
-            textUpdate.LevelUpdate();
             textUpdate.BestTime();
             rb.velocity = Vector2.zero;
             this.enabled = false;

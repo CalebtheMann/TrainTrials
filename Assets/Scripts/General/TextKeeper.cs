@@ -52,40 +52,6 @@ public class TextKeeper : MonoBehaviour
     {
         controller.TimerTime = 0;
     }
-
-    public void LevelUpdate()
-    {
-        if (TimerBox.gameObject != null)
-        {
-            switch (controller.CurrentCar)
-            {
-                case 0:
-                    LevelBox.text = "The Caboose";
-                    break;
-                case 1:
-                    LevelBox.text = "Blocking Buttons";
-                    break;
-                case 2:
-                    LevelBox.text = "Target Practice";
-                    break;
-                case 3:
-                    LevelBox.text = "Follow that Bullet!";
-                    break;
-                case 4:
-                    LevelBox.text = "Gloxing Day";
-                    break;
-                case 5:
-                    LevelBox.text = "The Beta Basics";
-                    break;
-                case 6:
-                    LevelBox.text = "The Beta Bonus";
-                    break;
-                default:
-                    LevelBox.text = "Mysterious Traincar";
-                    break;
-            }
-        }
-    }
     public void BestTime()
     {
         switch (controller.CurrentCar - 1)
