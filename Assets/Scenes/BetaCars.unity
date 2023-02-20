@@ -47928,6 +47928,10 @@ PrefabInstance:
       propertyPath: Screen
       value: 
       objectReference: {fileID: 1733561143}
+    - target: {fileID: 7495732076510600195, guid: d6dcc38bcf8e7ca449c38763e1102c30, type: 3}
+      propertyPath: DiveSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7495732076510600207, guid: d6dcc38bcf8e7ca449c38763e1102c30, type: 3}
       propertyPath: m_RootOrder
       value: 4

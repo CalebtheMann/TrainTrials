@@ -243,14 +243,15 @@ public class PlayerBehavior : MonoBehaviour
                 //mid-air diving
             ableToMove = false;
             playBonk = true;
+            rb.velocity = Vector3.zero;
             if (!Left)
             {
-                rb.AddRelativeForce(transform.right * DiveSpeed * 1);
+                rb.AddForce(transform.right * DiveSpeed * 1, ForceMode2D.Impulse);
                 transform.eulerAngles = Vector3.forward * -90;
             }
             else
             {
-                rb.AddRelativeForce(transform.right * DiveSpeed * -1);
+                rb.AddRelativeForce(transform.right * DiveSpeed * -1, ForceMode2D.Impulse);
                 transform.eulerAngles = Vector3.forward * 90;
             }
             Invoke("StopDiving", 4);

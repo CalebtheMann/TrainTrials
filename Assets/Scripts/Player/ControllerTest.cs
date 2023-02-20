@@ -137,7 +137,7 @@ public class ControllerTest : MonoBehaviour
     public IEnumerator DiveCooldown()
     {
         Player.Dive();
-        float Timer = 5f;
+        float Timer = .5f;
         while (Timer > 0)
         {
             print("Timer");
