@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RopeBehavior : MonoBehaviour
 {
-    public GameObject Crate;
+    public bool Cut;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class RopeBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            Crate.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            Cut = true;
             Destroy(gameObject);
         }
     }

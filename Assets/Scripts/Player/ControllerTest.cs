@@ -140,7 +140,6 @@ public class ControllerTest : MonoBehaviour
         float Timer = .5f;
         while (Timer > 0)
         {
-            print("Timer");
             Timer -= Time.deltaTime;
             yield return null;
         }
