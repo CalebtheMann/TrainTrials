@@ -41,7 +41,7 @@ public class CrateBehavior : MonoBehaviour
         while (Timer > 0)
         {
             Vector2 newPosition = transform.position;
-            newPosition.y -= 1 * Time.deltaTime;
+            newPosition.y -= 2 * Time.deltaTime;
             transform.position = new Vector2(newPosition.x, newPosition.y);
             Timer -= Time.deltaTime;
             yield return null;

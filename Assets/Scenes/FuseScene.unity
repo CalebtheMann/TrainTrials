@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rope: {fileID: 2120217370}
-  timeFalling: 2.5
+  timeFalling: 1.4
 --- !u!1 &8751005
 GameObject:
   m_ObjectHideFlags: 0
@@ -12478,9 +12478,9 @@ GameObject:
   - component: {fileID: 1746629107}
   - component: {fileID: 1746629106}
   - component: {fileID: 1746629108}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
