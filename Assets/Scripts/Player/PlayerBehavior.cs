@@ -8,6 +8,7 @@ public class PlayerBehavior : MonoBehaviour
     public float Jump;
     public float DiveSpeed;
     public float SlowDown;
+    public static PlayerBehavior Instance;
     public LayerMask GroundMask;
     public LayerMask GirderMask;
     bool ableToMove = true;
@@ -34,6 +35,15 @@ public class PlayerBehavior : MonoBehaviour
 
     void Start()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject); //Without this it restarts with no dive
         rb = GetComponent<Rigidbody2D>();
         sr = rb.GetComponent<SpriteRenderer>();
         controller = GameObject.Find("GameController").GetComponent<GameController>();
