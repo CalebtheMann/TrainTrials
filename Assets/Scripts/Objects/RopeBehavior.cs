@@ -5,6 +5,7 @@ using UnityEngine;
 public class RopeBehavior : MonoBehaviour
 {
     public bool Cut;
+    public GameObject Box;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class RopeBehavior : MonoBehaviour
         {
             Cut = true;
             Destroy(gameObject);
+            Box.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
     }
 }

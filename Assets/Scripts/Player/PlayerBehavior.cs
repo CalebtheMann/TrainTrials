@@ -267,6 +267,7 @@ public class PlayerBehavior : MonoBehaviour
         }
 
     }
+    
     void StopTalking()
     {
         if (Mathf.Abs(rb.velocity.x) < 3)

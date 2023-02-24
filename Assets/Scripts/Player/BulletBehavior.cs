@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour
@@ -16,6 +17,7 @@ public class BulletBehavior : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         Vector2 direction = transform.right;
         rb.velocity = direction * BulletSpeed;
+        StartCoroutine(waiter());
     }
 
     // Update is called once per frame
@@ -45,5 +47,11 @@ public class BulletBehavior : MonoBehaviour
         {
             Crate.GetComponent<Rigidbody2D>().gravityScale += 1;
         }
+    }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 }
