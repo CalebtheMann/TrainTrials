@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -353,10 +354,11 @@ public class PlayerBehavior : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             GetComponent<Animator>().SetTrigger("Damaged");
-            Invoke("ScreenDeath", 1);
-            textUpdate.Invoke("DeathScreen", 1);
-            rb.velocity = Vector2.zero;
-            this.enabled = false;
+            /* Invoke("ScreenDeath", 1);
+             textUpdate.Invoke("DeathScreen", 1);
+             rb.velocity = Vector2.zero;
+             this.enabled = false;*/
+            Restart();
         }
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Destroyer" || collision.gameObject.tag == "Girder")
         {
@@ -403,6 +405,11 @@ public class PlayerBehavior : MonoBehaviour
             textUpdate.BestTime();
             controller.Invoke("Ending", 1);
         }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("FuseScene");
     }
 
 }
