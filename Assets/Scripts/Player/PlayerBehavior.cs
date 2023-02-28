@@ -1,11 +1,16 @@
 using UnityEngine;
 using UnityEngine.Windows;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerBehavior : MonoBehaviour
 {
     public float Speed;
     public float Jump;
+    public float JumpTimer;
+    public float JumpTimerMax;
+    public float MaxJumpHeight;
+    public float Delay;
     public float DiveSpeed;
     public float SlowDown;
     public static PlayerBehavior Instance;
@@ -122,8 +127,8 @@ public class PlayerBehavior : MonoBehaviour
             //Jump, jump, jump, jump
             if (ControllerTest.instance.YMove != 0 && onGround && canJump)
             {
-                jumping = true;
                 canJump = false;
+                jumping = true;
                 GetComponent<Animator>().SetTrigger("Jumping");
             }
             if (ControllerTest.instance.DiveMove != 0)
@@ -185,6 +190,19 @@ public class PlayerBehavior : MonoBehaviour
                 }
             }
         }
+        if (ControllerTest.instance.YMove != 0 && jumping && JumpTimer < JumpTimerMax)
+            {
+                
+                rb.AddForce(transform.up * (JumpTimer + Delay) * MaxJumpHeight * (JumpTimer + JumpTimerMax));
+
+                /*if (rb.velocity.y > Jump)
+                {
+                    rb.velocity = rb.velocity.normalized * Jump;
+                }*/
+            } else {
+                canJump = true;
+                jumping = false;
+            }
     }
     void FixedUpdate()
     {
@@ -233,20 +251,25 @@ public class PlayerBehavior : MonoBehaviour
                 Invoke("StopTalking", 0.5f);
             }
             //Jumping action
-            if (jumping)
-            {
-                rb.AddForce(transform.up * Jump);
 
-                if (rb.velocity.y > Jump)
-                {
-                    rb.velocity = rb.velocity.normalized * Jump;
-                }
-                jumping = false;
-                Invoke("StopJumping", 0.105f);
-            }
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public void StartJump()
+    {
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void EndJump()
+    {
+
+    }
     public void Dive()
     {
         if (ableToMove && !onGround)
@@ -287,10 +310,6 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    void StopJumping()
-    {
-        canJump = true;
-    }
     void WhistlingAlong()
     {
         AudioSource.PlayClipAtPoint(Whistle, Camera.main.transform.position, 0.15f);

@@ -17,6 +17,7 @@ public class ControllerTest : MonoBehaviour
     bool reseting;
 
     private Coroutine DiveCooldownInstance;
+    private Coroutine JumpHeightInstance;
 
     public bool IsAiming;
     public Vector2 AimDirection;
@@ -38,6 +39,7 @@ public class ControllerTest : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         input = new Controllers();
         input.Test.Jumping.performed += ctx => Jumping();
+        input.Test.Jumping.canceled += ctx => JumpingEnded();
         input.Test.Diving.performed += ctx => Diving();
         input.Test.Shooting.performed += ctx => Shooting();
         input.Test.Reseting.performed += ctx => Reseting();
@@ -66,7 +68,18 @@ public class ControllerTest : MonoBehaviour
     public void Jumping()
     {
         jumping = true;
+        if (JumpHeightInstance == null)
+        {
+            JumpHeightInstance = StartCoroutine(JumpHeight());
+        }
     }
+    public void JumpingEnded()
+    {
+        jumping = false;
+        StopCoroutine(JumpHeight());
+        Player.JumpTimer = 0;
+    }
+
     public void Diving()
     {
         diving = true;
@@ -90,6 +103,7 @@ public class ControllerTest : MonoBehaviour
     private void OnDisable()
     {
         input.Test.Jumping.performed -= ctx => Jumping();
+        input.Test.Jumping.canceled -= ctx => JumpingEnded();
         input.Test.Diving.performed -= ctx => Diving();
         input.Test.Shooting.performed -= ctx => Shooting();
         input.Test.Reseting.performed -= ctx => Reseting();
@@ -109,7 +123,7 @@ public class ControllerTest : MonoBehaviour
         }
         if(jumping)
         {
-            YMove = input.Test.Jumping.ReadValue<float>();
+            YMove = 3;
         } else {
             YMove = 0;
         }
@@ -133,6 +147,18 @@ public class ControllerTest : MonoBehaviour
         {
            AimDirection = input.Test.Aiming.ReadValue<Vector2>();
         } 
+    }
+
+    public IEnumerator JumpHeight()
+    {
+        while (Player.JumpTimer < Player.JumpTimerMax)
+        {
+            Player.JumpTimer += Time.deltaTime;
+            yield return null;
+        }
+        jumping = false;
+        JumpHeightInstance = null;
+        Player.JumpTimer = 0;
     }
     public IEnumerator DiveCooldown()
     {
