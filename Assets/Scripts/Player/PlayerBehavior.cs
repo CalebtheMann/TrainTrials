@@ -6,7 +6,7 @@ using System;
 public class PlayerBehavior : MonoBehaviour
 {
     public float Speed;
-    public float Jump;
+    public float JumpStart;
     public float JumpTimer;
     public float JumpTimerMax;
     public float MaxJumpHeight;
@@ -129,6 +129,7 @@ public class PlayerBehavior : MonoBehaviour
             {
                 canJump = false;
                 jumping = true;
+                rb.AddForce(transform.up * JumpStart);
                 GetComponent<Animator>().SetTrigger("Jumping");
             }
             if (ControllerTest.instance.DiveMove != 0)
@@ -190,10 +191,10 @@ public class PlayerBehavior : MonoBehaviour
                 }
             }
         }
-        if (ControllerTest.instance.YMove != 0 && jumping && JumpTimer < JumpTimerMax)
+        if (ControllerTest.instance.YMove != 0 && jumping)
             {
                 
-                rb.AddForce(transform.up * (JumpTimer + Delay) * MaxJumpHeight * (JumpTimer + JumpTimerMax));
+                rb.AddForce(transform.up * (JumpTimer - Delay) * -MaxJumpHeight * (JumpTimer + JumpTimerMax));
 
                 /*if (rb.velocity.y > Jump)
                 {

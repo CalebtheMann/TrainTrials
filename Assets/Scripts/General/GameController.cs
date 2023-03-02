@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
         monkey = GetComponent<AudioSource>();
         BestTime1 = PlayerPrefs.GetFloat("1");
         BestTime2 = PlayerPrefs.GetFloat("2");

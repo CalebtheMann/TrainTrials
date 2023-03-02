@@ -77,7 +77,6 @@ public class ControllerTest : MonoBehaviour
     {
         jumping = false;
         StopCoroutine(JumpHeight());
-        Player.JumpTimer = 0;
     }
 
     public void Diving()
@@ -151,6 +150,7 @@ public class ControllerTest : MonoBehaviour
 
     public IEnumerator JumpHeight()
     {
+        Player.JumpTimer = 0;
         while (Player.JumpTimer < Player.JumpTimerMax)
         {
             Player.JumpTimer += Time.deltaTime;
@@ -158,7 +158,7 @@ public class ControllerTest : MonoBehaviour
         }
         jumping = false;
         JumpHeightInstance = null;
-        Player.JumpTimer = 0;
+        StopCoroutine(JumpHeight());
     }
     public IEnumerator DiveCooldown()
     {
