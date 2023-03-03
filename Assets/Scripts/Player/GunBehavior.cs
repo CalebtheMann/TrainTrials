@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.XR;
 
 public class GunBehavior : MonoBehaviour
 {
@@ -11,20 +10,22 @@ public class GunBehavior : MonoBehaviour
     GameObject spawnedBullet;
     PlayerBehavior player;
     SpriteRenderer sr;
-    GameController controller;
     public AudioClip Shot;
-    // Start is called before the first frame update
+
+    /// <summary>
+    /// Finds the players body
+    /// </summary>
     void Start()
     {
         player = GameObject.Find("Eeveeon").GetComponent<PlayerBehavior>();
-        controller = GameObject.Find("GameController").GetComponent<GameController>();
         sr = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Checks which direction the player is facing, and changes position to compensate.
+    /// </summary>
     void Update()
     {
-        //Checks which direction you should be facing
         if (player.Left)
         {
             sr.flipY = true;
@@ -39,8 +40,12 @@ public class GunBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Creates the bullet upon firing the gun.
+    /// </summary>
     void FixedUpdate()
     {
+        //The original gun aiming system
         //Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         
         float pew = Mathf.Atan2(ControllerTest.instance.AimDirection.y, ControllerTest.instance.AimDirection.x) * Mathf.Rad2Deg;
@@ -48,6 +53,7 @@ public class GunBehavior : MonoBehaviour
 
         if (ControllerTest.instance.GunShot != 0 && canFire == true)
         {
+            //Destroys previous bullet
             if(spawnedBullet)
             {
                 Destroy(spawnedBullet);
@@ -68,6 +74,10 @@ public class GunBehavior : MonoBehaviour
             Invoke("shootWait", 0.5f);
         }
     }
+
+    /// <summary>
+    /// Gives the gun firing a cooldown.
+    /// </summary>
     void shootWait()
     {
         canFire = true;

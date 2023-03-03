@@ -6,28 +6,33 @@ public class BulletBehavior : MonoBehaviour
     public float BulletSpeed;
     public LayerMask GroundMask;
     private Rigidbody2D rb;
-    SpriteRenderer sr;
     public AudioClip Rip;
     public GameObject Crate;
-    // Start is called before the first frame update
+
+    /// <summary>
+    /// Find the bullet's body and chooses the direction it follows.
+    /// </summary>
     void Start()
     {
 
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
         Vector2 direction = transform.right;
         rb.velocity = direction * BulletSpeed;
-        StartCoroutine(waiter());
+        StartCoroutine(Waiter());
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Moves the bullet in the direction it is facing.
+    /// </summary>
     void Update()
     {
         float direction = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, direction);
     }
 
-    //When the bullets hit the enemy
+    /// <summary>
+    /// Destroys the bullet on contact with certain triggers.
+    /// </summary>
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy" || collision.tag == "Bouncer")
@@ -36,20 +41,23 @@ public class BulletBehavior : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    /// <summary>
+    /// Destroys the bullet on contact with certain objects.
+    /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag =="Enemy" || collision.gameObject.tag =="Destroyer")
         {
             Destroy(gameObject);
         }
-
-        if (collision.gameObject.tag == "Rope")
-        {
-            Crate.GetComponent<Rigidbody2D>().gravityScale += 1;
-        }
     }
 
-    IEnumerator waiter()
+    /// <summary>
+    /// Destroys the bullet after three seconds.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator Waiter()
     {
         yield return new WaitForSeconds(3);
         Destroy(gameObject);

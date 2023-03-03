@@ -9,15 +9,22 @@ public class GloxBehavior : MonoBehaviour
     public AudioClip Chaching;
     public float EnemySpeed;
     public bool XFlipped = true;
-    public bool BoxForm = true;
-    // Start is called before the first frame update
+    public bool BoxForm = false;
+
+    /// <summary>
+    /// Find Glox's body, and finds the player.
+    /// </summary>
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = rb.GetComponent<SpriteRenderer>();
         player = GameObject.Find("Eeveeon").GetComponent<PlayerBehavior>();
     }
-    // Update is called once per frame
+
+    /// <summary>
+    /// When the box is active, Glox has the box's position.
+    /// Otherwise, moves toward the player depending on which direction they are.
+    /// </summary>
     void Update()
     {
         if (BoxForm)
@@ -45,6 +52,10 @@ public class GloxBehavior : MonoBehaviour
         }
 
     }
+    
+    /// <summary>
+    /// Becomes a box when hit by a bullet.
+    /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -64,16 +75,28 @@ public class GloxBehavior : MonoBehaviour
             }
         }
     }
+    
+    /// <summary>
+    /// Removes Glox from the scene.
+    /// </summary>
     void RipGox()
     {
        gameObject.SetActive(false);
     }
+
+    /// <summary>
+    /// Activates Box in the scene.
+    /// </summary>
     void BecomeBox()
     {
         goxLox.SetActive(true);
         BoxForm = true;
         this.enabled = true;
     }
+
+    /// <summary>
+    /// Teleports to Box's position upon loading.
+    /// </summary>
     private void OnEnable()
     {
         transform.position = goxLox.transform.position;

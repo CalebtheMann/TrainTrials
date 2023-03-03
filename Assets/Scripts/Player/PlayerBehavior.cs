@@ -1,17 +1,15 @@
 using UnityEngine;
-using UnityEngine.Windows;
 using UnityEngine.SceneManagement;
-using System;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    public float Speed;
-    public float JumpStart;
+    [SerializeField] float speed;
+    [SerializeField] float jumpStart;
     public float JumpTimer;
     public float JumpTimerMax;
-    public float MaxJumpHeight;
-    public float Delay;
-    public float DiveSpeed;
+    [SerializeField] float maxJumpHeight;
+    [SerializeField] float delay;
+    [SerializeField] float diveSpeed;
     public float SlowDown;
     public static PlayerBehavior Instance;
     public LayerMask GroundMask;
@@ -29,7 +27,6 @@ public class PlayerBehavior : MonoBehaviour
     public AudioClip Whistle;
     public AudioSource AudioSauce;
     public GameObject Screen;
-    public GameObject Despair;
     public Sprite Ball;
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -124,29 +121,29 @@ public class PlayerBehavior : MonoBehaviour
         //Movement
         if (ableToMove)
         {
-            //Jump, jump, jump, jump
+            //Starting a jump
             if (ControllerTest.instance.YMove != 0 && onGround && canJump)
             {
                 canJump = false;
                 jumping = true;
-                rb.AddForce(transform.up * JumpStart);
+                rb.AddForce(transform.up * jumpStart);
                 GetComponent<Animator>().SetTrigger("Jumping");
             }
             if (ControllerTest.instance.DiveMove != 0)
             {
                 if (!onGround)
                 {
-                //mid-air diving
+                //Mid-air diving
                     ableToMove = false;
                     playBonk = true;
                     if (!Left)
                     {
-                        rb.AddRelativeForce(transform.right * DiveSpeed * 1);
+                        rb.AddRelativeForce(transform.right * diveSpeed * 1);
                         transform.eulerAngles = Vector3.forward * -90;
                     }
                     else
                     {
-                        rb.AddRelativeForce(transform.right * DiveSpeed * -1);
+                        rb.AddRelativeForce(transform.right * diveSpeed * -1);
                         transform.eulerAngles = Vector3.forward * 90;
                     }
                  Invoke("StopDiving", 4);
@@ -155,7 +152,7 @@ public class PlayerBehavior : MonoBehaviour
         }
         else
         {
-        //cancel dive
+        //Cancel dive
             if (ControllerTest.instance.DiveMove != 0 && onGround && !canJump && !rollTime)
             {
                 playBonk = false;
@@ -170,7 +167,7 @@ public class PlayerBehavior : MonoBehaviour
                 if (hitWall)
                 {
                     CancelInvoke("StopDiving");
-                    rb.AddRelativeForce(transform.right * DiveSpeed / -4);
+                    rb.AddRelativeForce(transform.right * diveSpeed / -4);
                     transform.eulerAngles = Vector3.forward * -90;
                     rollTime = true;
                     GetComponent<Animator>().SetTrigger("Bonked");
@@ -183,7 +180,7 @@ public class PlayerBehavior : MonoBehaviour
                 if (hitWall)
                 {
                     CancelInvoke("StopDiving");
-                    rb.AddRelativeForce(transform.right * DiveSpeed / 4);
+                    rb.AddRelativeForce(transform.right * diveSpeed / 4);
                     transform.eulerAngles = Vector3.forward * 90;
                     rollTime = true;
                     GetComponent<Animator>().SetTrigger("Bonked");
@@ -191,16 +188,13 @@ public class PlayerBehavior : MonoBehaviour
                 }
             }
         }
+        //Jumping cont.
         if (ControllerTest.instance.YMove != 0 && jumping)
             {
-                
-                rb.AddForce(transform.up * (JumpTimer - Delay) * -MaxJumpHeight * (JumpTimer + JumpTimerMax));
-
-                /*if (rb.velocity.y > Jump)
-                {
-                    rb.velocity = rb.velocity.normalized * Jump;
-                }*/
-            } else {
+                rb.AddForce(transform.up * (JumpTimer - delay) * -maxJumpHeight * (JumpTimer + JumpTimerMax));
+            }
+            else
+            {
                 canJump = true;
                 jumping = false;
             }
@@ -227,10 +221,10 @@ public class PlayerBehavior : MonoBehaviour
             {
                 GetComponent<Animator>().SetBool("Walking", true);
                 Left = false;
-                rb.AddRelativeForce(transform.right * Speed);
+                rb.AddRelativeForce(transform.right * speed);
                 if (rb.velocity.x < 3)
                 {
-                    rb.AddRelativeForce(transform.right * Speed);
+                    rb.AddRelativeForce(transform.right * speed);
                 }
             }
             //Move left
@@ -238,10 +232,10 @@ public class PlayerBehavior : MonoBehaviour
             {
                 GetComponent<Animator>().SetBool("Walking", true);
                 Left = true;
-                rb.AddRelativeForce(transform.right * -Speed);
+                rb.AddRelativeForce(transform.right * -speed);
                 if (rb.velocity.x > -3)
                 {
-                    rb.AddRelativeForce(transform.right * -Speed);
+                    rb.AddRelativeForce(transform.right * -speed);
                 }
             }
             else
@@ -256,21 +250,6 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public void StartJump()
-    {
-
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public void EndJump()
-    {
-
-    }
     public void Dive()
     {
         if (ableToMove && !onGround)
@@ -281,12 +260,12 @@ public class PlayerBehavior : MonoBehaviour
             rb.velocity = Vector3.zero;
             if (!Left)
             {
-                rb.AddForce(transform.right * DiveSpeed * 1, ForceMode2D.Impulse);
+                rb.AddForce(transform.right * diveSpeed * 1, ForceMode2D.Impulse);
                 transform.eulerAngles = Vector3.forward * -90;
             }
             else
             {
-                rb.AddRelativeForce(transform.right * DiveSpeed * -1, ForceMode2D.Impulse);
+                rb.AddRelativeForce(transform.right * diveSpeed * -1, ForceMode2D.Impulse);
                 transform.eulerAngles = Vector3.forward * 90;
             }
             Invoke("StopDiving", 4);
@@ -328,10 +307,10 @@ public class PlayerBehavior : MonoBehaviour
             case 0:
                 Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", true);
-                //transform.position = new Vector2(216, -2);
+                transform.position = new Vector2(216, -2);
                 //transform.position = new Vector2(370, -2);
                 //transform.position = new Vector2(424, -2);
-                transform.position = new Vector2(494, -2);
+                //transform.position = new Vector2(494, -2);
                 break;
             case 1:
                 Gun = true;

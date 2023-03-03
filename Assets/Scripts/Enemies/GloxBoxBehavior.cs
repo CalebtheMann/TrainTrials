@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GloxBoxBehavior : MonoBehaviour
@@ -9,7 +7,10 @@ public class GloxBoxBehavior : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     public AudioClip Chaching;
-    // Start is called before the first frame update
+
+    /// <summary>
+    /// Find Box's body, and disappears upon loading the scene.
+    /// </summary>
     void Awake()
     {
         goxcode = gox.GetComponent<GloxBehavior>();
@@ -26,18 +27,9 @@ public class GloxBoxBehavior : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (goxcode.BoxForm)
-        {
-            
-        }
-        else
-        {
-            //transform.position = gox.transform.position;
-        }
-    }
+    /// <summary>
+    /// Becomes Glox when hit by a bullet.
+    /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -58,15 +50,26 @@ public class GloxBoxBehavior : MonoBehaviour
 
         }
     }
+
+    /// <summary>
+    /// Removes Box from the scene
+    /// </summary>
     void Death()
     {
         gameObject.SetActive(false);
     }
+
+    /// <summary>
+    /// Activates Glox in the scene.
+    /// </summary>
     void UnbecomeBox()
     {
         gox.SetActive(true);
     }
 
+    /// <summary>
+    /// Teleports to Glox's position upon loading.
+    /// </summary>
     private void OnEnable()
     {
         transform.position = gox.transform.position;
