@@ -29,13 +29,13 @@ public class ButtonDoor : MonoBehaviour
         {
             Vector2 newPosition = transform.position;
             newPosition.y += 8 * Time.deltaTime;
-            transform.position = new Vector2(newPosition.x, newPosition.y);
+            transform.position = new Vector2(newPosition.x, Mathf.Clamp(newPosition.y, startingPosition.y, startingPosition.y + 5));
         }
         else if (transform.position.y > startingPosition.y)
         {
             Vector2 newPosition = transform.position;
             newPosition.y -= 8 * Time.deltaTime;
-            transform.position = new Vector2(newPosition.x, newPosition.y);
+            transform.position = new Vector2(newPosition.x, Mathf.Clamp(newPosition.y, startingPosition.y, startingPosition.y + 5));
         }
     }
 }
