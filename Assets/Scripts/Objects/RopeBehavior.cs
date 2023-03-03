@@ -6,6 +6,8 @@ public class RopeBehavior : MonoBehaviour
 {
     public bool Cut;
     public GameObject Box;
+    public GameObject Glox;
+    public GameObject GloxBox;
 
     // Start is called before the first frame update
     void Start()

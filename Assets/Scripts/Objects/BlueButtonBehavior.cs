@@ -23,11 +23,7 @@ public class BlueButtonBehavior : MonoBehaviour
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bullet")
-        {
-            Pressed = true;
-        }
-        else if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             Pressed = true;
         }

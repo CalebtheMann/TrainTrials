@@ -24,7 +24,6 @@ public class GloxBoxBehavior : MonoBehaviour
         {
             sr.flipX = false;
         }
-        
     }
 
     // Update is called once per frame

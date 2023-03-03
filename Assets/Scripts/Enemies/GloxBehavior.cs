@@ -8,8 +8,8 @@ public class GloxBehavior : MonoBehaviour
     SpriteRenderer sr;
     public AudioClip Chaching;
     public float EnemySpeed;
-    public bool XFlipped = false;
-    public bool BoxForm = false;
+    public bool XFlipped = true;
+    public bool BoxForm = true;
     // Start is called before the first frame update
     void Awake()
     {
@@ -62,7 +62,6 @@ public class GloxBehavior : MonoBehaviour
                 goxLox.GetComponent<Animator>().SetTrigger("Boxing");
                 this.enabled = false;
             }
-
         }
     }
     void RipGox()

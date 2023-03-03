@@ -25,7 +25,7 @@ public class ButtonDoor : MonoBehaviour
         {
             rise = false;
         }
-        if (rise && transform.position.y < startingPosition.y + 4)
+        if (rise && transform.position.y < startingPosition.y + 5)
         {
             Vector2 newPosition = transform.position;
             newPosition.y += 8 * Time.deltaTime;
