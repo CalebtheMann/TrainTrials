@@ -97,9 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0dbfb4be14cc04fb636534f2e6f5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   IsAiming: 0
   AimDirection: {x: 0, y: 0}
   XMove: 0
   YMove: 0
   DiveMove: 0
   GunShot: 0
+  Reset: 0

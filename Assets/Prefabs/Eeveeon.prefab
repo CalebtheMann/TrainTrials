@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7495732076510600207}
   - component: {fileID: 7495732076510600206}
-  - component: {fileID: 7495732076510600202}
   - component: {fileID: 7495732076510600204}
   - component: {fileID: 7495732076510600195}
   - component: {fileID: 7495732076510600200}
   - component: {fileID: 7495732076510600201}
+  - component: {fileID: 1427299182}
   m_Layer: 6
   m_Name: Eeveeon
   m_TagString: Player
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7495732076510600194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.06, y: -1.74, z: 0}
-  m_LocalScale: {x: 0.62703264, y: 0.62703264, z: 0.62703264}
+  m_LocalScale: {x: 0.27905336, y: 0.27905336, z: 0.27905336}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7495732077074510855}
@@ -79,84 +79,17 @@ SpriteRenderer:
   m_SortingLayerID: -1074406093
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 1817fdd1c8bd74a45b2c0f5c3f10f07e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 41a57861190e9524da70c2bfb10a362b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.88, y: 2.54}
+  m_Size: {x: 7, y: 7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &7495732076510600202
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7495732076510600194}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.88, y: 2.54}
-    newSize: {x: 1.88, y: 2.54}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.56, y: -1.27}
-      - {x: 0.68484426, y: -1.2702712}
-      - {x: 0.739479, y: -1.2674216}
-      - {x: 0.78999996, y: -0.91999996}
-      - {x: 0.68, y: -0.72999996}
-      - {x: 0.79999995, y: -0.71999997}
-      - {x: 0.87, y: -0.62}
-      - {x: 0.87, y: -0.5}
-      - {x: 0.85999995, y: -0.42}
-      - {x: 0.74, y: -0.26}
-      - {x: 0.72999996, y: -0.099999994}
-      - {x: 0.77, y: 0.14999999}
-      - {x: 0.78, y: 0.32999998}
-      - {x: 0.69, y: 0.48999998}
-      - {x: 0.53999996, y: 0.58}
-      - {x: 0.4988422, y: 0.73579115}
-      - {x: 0.6675411, y: 0.90250546}
-      - {x: 0.52444804, y: 1.2206876}
-      - {x: 0.14999999, y: 1.27}
-      - {x: -0.38377687, y: 1.2885141}
-      - {x: -0.43121922, y: 1.2790534}
-      - {x: -0.5423405, y: 1.2120454}
-      - {x: -0.6952905, y: 0.9873882}
-      - {x: -0.59131914, y: 0.81355846}
-      - {x: -0.57, y: 0.71999997}
-      - {x: -0.59, y: 0.52}
-      - {x: -0.79732895, y: 0.4196354}
-      - {x: -0.83306295, y: 0.097988844}
-      - {x: -0.69602776, y: -0.19281913}
-      - {x: -0.69, y: -0.37}
-      - {x: -0.84, y: -0.31}
-      - {x: -0.94, y: -0.35}
-      - {x: -0.94, y: -0.62}
-      - {x: -0.9, y: -0.69}
-      - {x: -0.79999995, y: -0.78}
-      - {x: -0.8192342, y: -0.8090092}
-      - {x: -0.8544715, y: -0.9669614}
-      - {x: -0.6748669, y: -1.2710874}
-      - {x: -0.56, y: -1.27}
-      - {x: -0.049999997, y: -1.27}
-      - {x: 0.04776449, y: -1.2714587}
-      - {x: 0.22999999, y: -1.27}
 --- !u!50 &7495732076510600204
 Rigidbody2D:
   serializedVersion: 4
@@ -190,9 +123,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63f5c4552c85754bbf3b357e08362c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 15
-  Jump: 270
-  DiveSpeed: 500
+  speed: 0
+  jumpStart: 0
+  JumpTimer: 0
+  JumpTimerMax: 0.5
+  maxJumpHeight: 0
+  delay: 0
+  diveSpeed: 0
   SlowDown: 1.5
   GroundMask:
     serializedVersion: 2
@@ -200,18 +137,13 @@ MonoBehaviour:
   GirderMask:
     serializedVersion: 2
     m_Bits: 0
-  DespairMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  Left: 0
-  DespairMode: 0
+  Left: 1
   Bonk: {fileID: 8300000, guid: 92e06d86ba6660b4e9a98a23c2f71157, type: 3}
   Whistle: {fileID: 8300000, guid: 7251ce5e4d361194fbef12625517d54d, type: 3}
-  AudioSauce: {fileID: 0}
+  AudioSauce: {fileID: 7495732076510600200}
   Screen: {fileID: 0}
-  Despair: {fileID: 0}
   Ball: {fileID: 21300000, guid: 3f6e5fdad7485ea4ba2f8a704a04476a, type: 3}
-  Gun: 0
+  Gun: 1
 --- !u!82 &7495732076510600200
 AudioSource:
   m_ObjectHideFlags: 0
@@ -316,7 +248,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7495732076510600194}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d481608644d502f40bb195eac8571459, type: 2}
   m_CullingMode: 0
@@ -328,6 +260,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &1427299182
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495732076510600194}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.12789458, y: -0.014957905}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7, y: 7}
+    newSize: {x: 7, y: 7}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.6442513, y: 6.090989}
+  m_EdgeRadius: 0
 --- !u!1 &7495732076961701644
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +344,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7495732077074510854}
   m_LocalRotation: {x: -0, y: -0, z: 0.90044, w: -0.4349802}
-  m_LocalPosition: {x: -0.394, y: -0.347, z: 0}
+  m_LocalPosition: {x: -0.862, y: -0.716, z: 0}
   m_LocalScale: {x: 1.0128843, y: 1.0128843, z: 1.0128843}
   m_ConstrainProportionsScale: 0
   m_Children:

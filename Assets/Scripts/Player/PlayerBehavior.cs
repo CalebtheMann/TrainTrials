@@ -52,7 +52,7 @@ public class PlayerBehavior : MonoBehaviour
         textUpdate = GameObject.Find("CameraController").GetComponent<TextKeeper>();
         gunArm = GameObject.Find("Gun");
         AudioSauce = GetComponent<AudioSource>();
-        CarStart();
+        //CarStart();
     }
 
     void Update()
@@ -298,7 +298,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         //textUpdate.DeathScreenDeath();
         Screen.GetComponent<Animator>().SetBool("Blacked Out", false);
-        textUpdate.TimerReset();
+        //textUpdate.TimerReset();
         gunArm.SetActive(false);
         Invoke("WhistlingAlong", 0.01f);
         Invoke("WhistlingAlong", 0.51f);
@@ -307,7 +307,7 @@ public class PlayerBehavior : MonoBehaviour
             case 0:
                 Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", true);
-                transform.position = new Vector2(216, -2);
+                //transform.position = new Vector2(216, -2);
                 //transform.position = new Vector2(370, -2);
                 //transform.position = new Vector2(424, -2);
                 //transform.position = new Vector2(494, -2);

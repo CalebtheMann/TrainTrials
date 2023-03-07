@@ -16,8 +16,8 @@ public class TextKeeper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Death.gameObject.SetActive(false);
-        Death2.gameObject.SetActive(false);
+        //Death.gameObject.SetActive(false);
+        //Death2.gameObject.SetActive(false);
         Invoke("LevelUpdate", .01f);
         controller = GameObject.Find("GameController").GetComponent<GameController>();
         player = GameObject.Find("Eeveeon").GetComponent<PlayerBehavior>();

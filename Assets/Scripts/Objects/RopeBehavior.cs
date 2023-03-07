@@ -1,24 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RopeBehavior : MonoBehaviour
 {
     public bool Cut;
     public GameObject Box;
-    public GameObject Glox;
-    public GameObject GloxBox;
+    public Transform EndLocation;
+    public float DropSpeed;
+    public float RotateSpeed;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (Cut)
+        {
+            Box.transform.position = Vector3.MoveTowards(Box.transform.position, EndLocation.position, DropSpeed * Time.deltaTime);
+            Box.transform.rotation = Quaternion.RotateTowards(Box.transform.rotation, EndLocation.rotation, RotateSpeed * Time.deltaTime);
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -26,8 +22,7 @@ public class RopeBehavior : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             Cut = true;
-            Destroy(gameObject);
-            Box.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 }
