@@ -62,6 +62,9 @@ TagManager:
   - name: Level
     uniqueID: 2515798299
     locked: 0
+  - name: WhiteSquareLevel
+    uniqueID: 3641427701
+    locked: 0
   - name: Player
     uniqueID: 3220561203
     locked: 0
