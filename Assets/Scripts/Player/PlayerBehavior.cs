@@ -52,7 +52,7 @@ public class PlayerBehavior : MonoBehaviour
         textUpdate = GameObject.Find("CameraController").GetComponent<TextKeeper>();
         gunArm = GameObject.Find("Gun");
         AudioSauce = GetComponent<AudioSource>();
-        CarStart();
+        //CarStart();
     }
 
     void Update()
@@ -122,14 +122,14 @@ public class PlayerBehavior : MonoBehaviour
         if (ableToMove)
         {
             //Starting a jump
-            if (ControllerTest.Instance.YMove != 0 && onGround && canJump)
+            if (ControllerTest.instance.YMove != 0 && onGround && canJump)
             {
                 canJump = false;
                 jumping = true;
                 rb.AddForce(transform.up * jumpStart);
                 GetComponent<Animator>().SetTrigger("Jumping");
             }
-            /*if (ControllerTest.Instance.DiveMove != 0)
+            if (ControllerTest.instance.DiveMove != 0)
             {
                 if (!onGround)
                 {
@@ -148,12 +148,12 @@ public class PlayerBehavior : MonoBehaviour
                     }
                  Invoke("StopDiving", 4);
                 }
-            }*/
+            }
         }
         else
         {
         //Cancel dive
-            if (ControllerTest.Instance.DiveMove != 0 && onGround && !canJump && !rollTime)
+            if (ControllerTest.instance.DiveMove != 0 && onGround && !canJump && !rollTime)
             {
                 playBonk = false;
                 rb.velocity /= 2;
@@ -189,7 +189,7 @@ public class PlayerBehavior : MonoBehaviour
             }
         }
         //Jumping cont.
-        if (ControllerTest.Instance.YMove != 0 && jumping)
+        if (ControllerTest.instance.YMove != 0 && jumping)
             {
                 rb.AddForce(transform.up * (JumpTimer - delay) * -maxJumpHeight * (JumpTimer + JumpTimerMax));
             }
@@ -212,12 +212,12 @@ public class PlayerBehavior : MonoBehaviour
         //Movement
         if (ableToMove)
         {
-            if (ControllerTest.Instance.XMove > 0 && ControllerTest.Instance.XMove < 0)
+            if (ControllerTest.instance.XMove > 0 && ControllerTest.instance.XMove < 0)
             {
 
             }
             //Move right
-            else if (ControllerTest.Instance.XMove > 0 && rb.velocity.x < 15)
+            else if (ControllerTest.instance.XMove > 0 && rb.velocity.x < 15)
             {
                 GetComponent<Animator>().SetBool("Walking", true);
                 Left = false;
@@ -228,7 +228,7 @@ public class PlayerBehavior : MonoBehaviour
                 }
             }
             //Move left
-            else if (ControllerTest.Instance.XMove < 0 && rb.velocity.x > -15)
+            else if (ControllerTest.instance.XMove < 0 && rb.velocity.x > -15)
             {
                 GetComponent<Animator>().SetBool("Walking", true);
                 Left = true;
@@ -299,11 +299,13 @@ public class PlayerBehavior : MonoBehaviour
         //textUpdate.DeathScreenDeath();
         Screen.GetComponent<Animator>().SetBool("Blacked Out", false);
         //textUpdate.TimerReset();
-        //Invoke("WhistlingAlong", 0.01f);
-        //Invoke("WhistlingAlong", 0.51f);
+        gunArm.SetActive(false);
+        Invoke("WhistlingAlong", 0.01f);
+        Invoke("WhistlingAlong", 0.51f);
         switch (controller.CurrentCar)
         {
             case 0:
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", true);
                 //transform.position = new Vector2(216, -2);
                 //transform.position = new Vector2(370, -2);
@@ -311,41 +313,44 @@ public class PlayerBehavior : MonoBehaviour
                 //transform.position = new Vector2(494, -2);
                 break;
             case 1:
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", true);
                 transform.position = new Vector2(292, -2);
                 break;
             case 2:
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", true);
                 transform.position = new Vector2(370, -2);
                 break;
             case 3:
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", false);
                 transform.position = new Vector2(424, -2);
                 break;
             case 4:
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", false);
                 transform.position = new Vector2(494, -2);
                 break;
             case 5:
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", true);
                 transform.position = new Vector2(0, -2);
                 break;
             case 6:
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", false);
                 transform.position = new Vector2(72, -2);
                 break;
-            case 7:
-                transform.position = new Vector2(-10, 0);
-                break;
-            case 8:
-                //Put level 2 here
-                break;
             default:
+                Gun = true;
                 GetComponent<Animator>().SetBool("Gunless", false);
                 transform.position = new Vector2(72, -2);
                 break;
 
         }
+        
+        this.enabled = true;
     }
 
     void ScreenDeath()
@@ -409,16 +414,11 @@ public class PlayerBehavior : MonoBehaviour
             textUpdate.BestTime();
             controller.Invoke("Ending", 1);
         }
-        if (collision.tag == "FuseStart")
-        {
-            controller.CurrentCar = 7;
-        }
     }
 
     public void Restart()
     {
         SceneManager.LoadScene("FuseScene");
-        CarStart();
     }
 
 }

@@ -2,20 +2,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public static CameraController Instance;
     Transform player;
     // Start is called before the first frame update
     void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
         player = GameObject.Find("Eeveeon").transform;
     }
 

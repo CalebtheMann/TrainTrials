@@ -48,10 +48,10 @@ public class GunBehavior : MonoBehaviour
         //The original gun aiming system
         //Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         
-        float pew = Mathf.Atan2(ControllerTest.Instance.AimDirection.y, ControllerTest.Instance.AimDirection.x) * Mathf.Rad2Deg;
+        float pew = Mathf.Atan2(ControllerTest.instance.AimDirection.y, ControllerTest.instance.AimDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, pew);
 
-        if (ControllerTest.Instance.GunShot != 0 && canFire == true)
+        if (ControllerTest.instance.GunShot != 0 && canFire == true)
         {
             //Destroys previous bullet
             if(spawnedBullet)

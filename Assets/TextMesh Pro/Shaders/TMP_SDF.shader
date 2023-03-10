@@ -128,7 +128,7 @@ SubShader {
 		#include "TMPro.cginc"
 
 		struct vertex_t {
-			UNITY_VERTEX_INPUT_Instance_ID
+			UNITY_VERTEX_INPUT_INSTANCE_ID
 			float4	position		: POSITION;
 			float3	normal			: NORMAL;
 			fixed4	color			: COLOR;
@@ -138,7 +138,7 @@ SubShader {
 
 
 		struct pixel_t {
-			UNITY_VERTEX_INPUT_Instance_ID
+			UNITY_VERTEX_INPUT_INSTANCE_ID
 			UNITY_VERTEX_OUTPUT_STEREO
 			float4	position		: SV_POSITION;
 			fixed4	color			: COLOR;
@@ -163,8 +163,8 @@ SubShader {
 			pixel_t output;
 
 			UNITY_INITIALIZE_OUTPUT(pixel_t, output);
-			UNITY_SETUP_Instance_ID(input);
-			UNITY_TRANSFER_Instance_ID(input,output);
+			UNITY_SETUP_INSTANCE_ID(input);
+			UNITY_TRANSFER_INSTANCE_ID(input,output);
 			UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
 			float bold = step(input.texcoord1.y, 0);
@@ -235,7 +235,7 @@ SubShader {
 
 		fixed4 PixShader(pixel_t input) : SV_Target
 		{
-			UNITY_SETUP_Instance_ID(input);
+			UNITY_SETUP_INSTANCE_ID(input);
 
 			float c = tex2D(_MainTex, input.atlas).a;
 
