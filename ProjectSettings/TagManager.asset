@@ -16,6 +16,7 @@ TagManager:
   - Bouncer
   - Girder
   - Rope
+  - FuseStart
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,7 @@ public class ControllerTest : MonoBehaviour
     public PlayerBehavior Player;
 
     private Controllers input;
-    public static ControllerTest instance;
+    public static ControllerTest Instance;
     bool moving;
     bool jumping;
     bool diving;
@@ -28,9 +28,9 @@ public class ControllerTest : MonoBehaviour
     public float Reset;
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {

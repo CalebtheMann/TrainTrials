@@ -84,7 +84,7 @@ public class GameController : MonoBehaviour
             }
         }*/
         //Restart
-        if (ControllerTest.instance.Reset != 0)
+        if (ControllerTest.Instance.Reset != 0)
         {
             SceneManager.LoadScene("BetaCars");
         }

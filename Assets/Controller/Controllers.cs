@@ -486,7 +486,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
         public static implicit operator InputActionMap(TestActions set) { return set.Get(); }
-        public void SetCallbacks(ITestActions instance)
+        public void SetCallbacks(ITestActions Instance)
         {
             if (m_Wrapper.m_TestActionsCallbackInterface != null)
             {
@@ -515,33 +515,33 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 @EndGame.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnEndGame;
                 @EndGame.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnEndGame;
             }
-            m_Wrapper.m_TestActionsCallbackInterface = instance;
-            if (instance != null)
+            m_Wrapper.m_TestActionsCallbackInterface = Instance;
+            if (Instance != null)
             {
-                @Jumping.started += instance.OnJumping;
-                @Jumping.performed += instance.OnJumping;
-                @Jumping.canceled += instance.OnJumping;
-                @MovementX.started += instance.OnMovementX;
-                @MovementX.performed += instance.OnMovementX;
-                @MovementX.canceled += instance.OnMovementX;
-                @Diving.started += instance.OnDiving;
-                @Diving.performed += instance.OnDiving;
-                @Diving.canceled += instance.OnDiving;
-                @Shooting.started += instance.OnShooting;
-                @Shooting.performed += instance.OnShooting;
-                @Shooting.canceled += instance.OnShooting;
-                @Aiming.started += instance.OnAiming;
-                @Aiming.performed += instance.OnAiming;
-                @Aiming.canceled += instance.OnAiming;
-                @StartAiming.started += instance.OnStartAiming;
-                @StartAiming.performed += instance.OnStartAiming;
-                @StartAiming.canceled += instance.OnStartAiming;
-                @Reseting.started += instance.OnReseting;
-                @Reseting.performed += instance.OnReseting;
-                @Reseting.canceled += instance.OnReseting;
-                @EndGame.started += instance.OnEndGame;
-                @EndGame.performed += instance.OnEndGame;
-                @EndGame.canceled += instance.OnEndGame;
+                @Jumping.started += Instance.OnJumping;
+                @Jumping.performed += Instance.OnJumping;
+                @Jumping.canceled += Instance.OnJumping;
+                @MovementX.started += Instance.OnMovementX;
+                @MovementX.performed += Instance.OnMovementX;
+                @MovementX.canceled += Instance.OnMovementX;
+                @Diving.started += Instance.OnDiving;
+                @Diving.performed += Instance.OnDiving;
+                @Diving.canceled += Instance.OnDiving;
+                @Shooting.started += Instance.OnShooting;
+                @Shooting.performed += Instance.OnShooting;
+                @Shooting.canceled += Instance.OnShooting;
+                @Aiming.started += Instance.OnAiming;
+                @Aiming.performed += Instance.OnAiming;
+                @Aiming.canceled += Instance.OnAiming;
+                @StartAiming.started += Instance.OnStartAiming;
+                @StartAiming.performed += Instance.OnStartAiming;
+                @StartAiming.canceled += Instance.OnStartAiming;
+                @Reseting.started += Instance.OnReseting;
+                @Reseting.performed += Instance.OnReseting;
+                @Reseting.canceled += Instance.OnReseting;
+                @EndGame.started += Instance.OnEndGame;
+                @EndGame.performed += Instance.OnEndGame;
+                @EndGame.canceled += Instance.OnEndGame;
             }
         }
     }
