@@ -38,6 +38,10 @@ public class ButtonBehavior : MonoBehaviour
         {
             Pressed = true;
         }
+        else if (collision.gameObject.tag == "Enemy")
+        {
+            Pressed = true;
+        }
     }
     void Unpress()
     {
