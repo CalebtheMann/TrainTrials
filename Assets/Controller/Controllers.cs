@@ -65,7 +65,7 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Aiming"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""4262cd71-cde8-411e-a7ac-aea4019a825d"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",

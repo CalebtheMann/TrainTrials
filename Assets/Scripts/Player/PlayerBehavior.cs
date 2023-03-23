@@ -126,7 +126,7 @@ public class PlayerBehavior : MonoBehaviour
             {
                 canJump = false;
                 jumping = true;
-                rb.AddForce(transform.up * jumpStart);
+                rb.AddForce(transform.up * jumpStart, ForceMode2D.Impulse);
                 GetComponent<Animator>().SetTrigger("Jumping");
             }
             if (ControllerTest.instance.DiveMove != 0)
