@@ -3,7 +3,7 @@ using UnityEngine;
 public class RopeBehavior : MonoBehaviour
 {
     public bool Cut;
-    public GameObject Box;
+    /* public GameObject Box;
     public Transform EndLocation;
     public float DropSpeed;
     public float RotateSpeed;
@@ -15,7 +15,7 @@ public class RopeBehavior : MonoBehaviour
             Box.transform.position = Vector3.MoveTowards(Box.transform.position, EndLocation.position, DropSpeed * Time.deltaTime);
             Box.transform.rotation = Quaternion.RotateTowards(Box.transform.rotation, EndLocation.rotation, RotateSpeed * Time.deltaTime);
         }
-    }
+    }*/
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
