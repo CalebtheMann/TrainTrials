@@ -331,10 +331,13 @@ public class PlayerBehavior : MonoBehaviour
                 transform.position = new Vector2(72, -2);
                 break;
             case 7:
-                transform.position = new Vector2(-10, 0);
+                transform.position = new Vector2(31, -1.6f);
                 break;
             case 8:
-                //Put level 2 here
+                transform.position = new Vector2(128.14f, -1.64f);
+                break;
+            case 9:
+                transform.position = new Vector2(147.77f, -1.64f);
                 break;
             default:
                 transform.position = new Vector2(72, -2); //Change this
@@ -404,6 +407,17 @@ public class PlayerBehavior : MonoBehaviour
         {
             controller.CurrentCar = 7;
         }
+
+        if (collision.tag == "Checkpoint1")
+        {
+            controller.CurrentCar = 8;
+        }
+
+        if (collision.tag == "Checkpoint2")
+        {
+            controller.CurrentCar = 9;
+        }
+
         if (collision.tag == "DoorClosing")
         {
             //Add code to close doors
