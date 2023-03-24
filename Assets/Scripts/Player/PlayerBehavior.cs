@@ -52,7 +52,7 @@ public class PlayerBehavior : MonoBehaviour
         textUpdate = GameObject.Find("CameraController").GetComponent<TextKeeper>();
         gunArm = GameObject.Find("Gun");
         AudioSauce = GetComponent<AudioSource>();
-        //CarStart();
+        CarStart();
     }
 
     void Update()
@@ -129,7 +129,7 @@ public class PlayerBehavior : MonoBehaviour
                 rb.AddForce(transform.up * jumpStart, ForceMode2D.Impulse);
                 GetComponent<Animator>().SetTrigger("Jumping");
             }
-            if (ControllerTest.instance.DiveMove != 0)
+            /*if (ControllerTest.instance.DiveMove != 0)
             {
                 if (!onGround)
                 {
@@ -148,17 +148,17 @@ public class PlayerBehavior : MonoBehaviour
                     }
                  Invoke("StopDiving", 4);
                 }
-            }
+            }*/
         }
         else
         {
         //Cancel dive
-            if (ControllerTest.instance.DiveMove != 0 && onGround && !canJump && !rollTime)
+            /*if (ControllerTest.instance.DiveMove != 0 && onGround && !canJump && !rollTime)
             {
                 playBonk = false;
                 rb.velocity /= 2;
                 StopDiving();
-            }
+            }*/
         //Bonking 
             if (Left && touchingGround)
             {
@@ -250,7 +250,7 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    public void Dive()
+    /*public void Dive()
     {
         if (ableToMove && !onGround)
         {
@@ -288,7 +288,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("Walking", false);
         }
-    }
+    }*/
 
     void WhistlingAlong()
     {
@@ -299,9 +299,9 @@ public class PlayerBehavior : MonoBehaviour
         //textUpdate.DeathScreenDeath();
         Screen.GetComponent<Animator>().SetBool("Blacked Out", false);
         //textUpdate.TimerReset();
-        gunArm.SetActive(false);
-        Invoke("WhistlingAlong", 0.01f);
-        Invoke("WhistlingAlong", 0.51f);
+        //gunArm.SetActive(false);
+        //Invoke("WhistlingAlong", 0.01f);
+        //Invoke("WhistlingAlong", 0.51f);
         switch (controller.CurrentCar)
         {
             case 0:
@@ -313,43 +313,40 @@ public class PlayerBehavior : MonoBehaviour
                 //transform.position = new Vector2(494, -2);
                 break;
             case 1:
-                Gun = true;
-                GetComponent<Animator>().SetBool("Gunless", true);
                 transform.position = new Vector2(292, -2);
                 break;
             case 2:
-                Gun = true;
-                GetComponent<Animator>().SetBool("Gunless", true);
                 transform.position = new Vector2(370, -2);
                 break;
             case 3:
-                Gun = true;
-                GetComponent<Animator>().SetBool("Gunless", false);
                 transform.position = new Vector2(424, -2);
                 break;
             case 4:
-                Gun = true;
-                GetComponent<Animator>().SetBool("Gunless", false);
                 transform.position = new Vector2(494, -2);
                 break;
             case 5:
-                Gun = true;
-                GetComponent<Animator>().SetBool("Gunless", true);
                 transform.position = new Vector2(0, -2);
                 break;
             case 6:
-                Gun = true;
-                GetComponent<Animator>().SetBool("Gunless", false);
                 transform.position = new Vector2(72, -2);
+                break;
+            case 7:
+                transform.position = new Vector2(-10, 0);
+                break;
+            case 8:
+                //Put level 2 here
                 break;
             default:
-                Gun = true;
-                GetComponent<Animator>().SetBool("Gunless", false);
-                transform.position = new Vector2(72, -2);
+                transform.position = new Vector2(72, -2); //Change this
                 break;
+                /*default:
+                    Gun = true;
+                    GetComponent<Animator>().SetBool("Gunless", false);
+                    transform.position = new Vector2(72, -2);
+                    break;*/
 
         }
-        
+
         this.enabled = true;
     }
 
@@ -403,6 +400,14 @@ public class PlayerBehavior : MonoBehaviour
             Gun = true;
             GetComponent<Animator>().SetBool("Gunless", false);
         }
+        if (collision.tag == "FuseStart")
+        {
+            controller.CurrentCar = 7;
+        }
+        if (collision.tag == "DoorClosing")
+        {
+            //Add code to close doors
+        }
         if (collision.tag == "The End")
         {
             ScreenDeath();
@@ -419,6 +424,7 @@ public class PlayerBehavior : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene("FuseScene");
+        CarStart();
     }
 
 }
