@@ -1,18 +1,82 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool Button;
+    public bool Pressed;
+    public bool Closed;
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        
+        if (Button)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                Pressed = true;
+            }
+            else if (collision.gameObject.tag == "Destroyer")
+            {
+                Pressed = true;
+            }
+            else if (collision.gameObject.tag == "Enemy")
+            {
+                Pressed = true;
+            }
+            else if (collision.gameObject.tag == "Bullet")
+            {
+                Pressed = true;
+            }
+            else
+            {
+                Pressed = false;
+            }
+        }
+        else
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                Closed = true;
+            }
+            else
+            {
+                Closed = false;
+            }
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (Button)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                Pressed = false;
+            }
+            else if (collision.gameObject.tag == "Destroyer")
+            {
+                Pressed = false;
+            }
+            else if (collision.gameObject.tag == "Enemy")
+            {
+                Pressed = false;
+            }
+            else if (collision.gameObject.tag == "Bullet")
+            {
+                Pressed = false;
+            }
+            else
+            {
+                Pressed = false;
+            }
+        }
+        else
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                Closed = false;
+            }
+            else
+            {
+                Closed = false;
+            }
+        }
     }
 }

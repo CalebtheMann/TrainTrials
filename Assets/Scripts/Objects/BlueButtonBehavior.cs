@@ -27,7 +27,7 @@ public class BlueButtonBehavior : MonoBehaviour
         {
             Pressed = true;
         }
-        else if(collision.gameObject.tag == "Destroyer")
+        else if (collision.gameObject.tag == "Destroyer")
         {
             Pressed = true;
         }
