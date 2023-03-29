@@ -2400,7 +2400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 447141337}
   - component: {fileID: 447141338}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bullet (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3252,6 +3252,10 @@ PrefabInstance:
     - target: {fileID: -3888481672020999207, guid: a9d7a1f5e4a6afd4883894865eb906c7, type: 3}
       propertyPath: m_Name
       value: blox-enemyhit3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3888481672020999207, guid: a9d7a1f5e4a6afd4883894865eb906c7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: a9d7a1f5e4a6afd4883894865eb906c7, type: 3}
       propertyPath: m_RootOrder
@@ -10286,11 +10290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495732076510600207, guid: d6dcc38bcf8e7ca449c38763e1102c30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.5
+      value: 62.9
       objectReference: {fileID: 0}
     - target: {fileID: 7495732076510600207, guid: d6dcc38bcf8e7ca449c38763e1102c30, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.1
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7495732076510600207, guid: d6dcc38bcf8e7ca449c38763e1102c30, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12410,9 +12414,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1809900000}
   - component: {fileID: 1809899999}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GloxSign
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

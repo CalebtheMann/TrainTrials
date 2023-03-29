@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1936244515848600426}
   m_Layer: 0
   m_Name: TriggerButton
-  m_TagString: Untagged
+  m_TagString: Bouncer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
