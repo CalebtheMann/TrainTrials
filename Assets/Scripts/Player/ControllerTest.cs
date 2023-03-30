@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ControllerTest : MonoBehaviour
 {
@@ -113,7 +114,11 @@ public class ControllerTest : MonoBehaviour
         input.Test.Disable();
     }
     private void Update()
-    {
+    {        
+        if (Player == null)
+        {
+            Player = GameObject.Find("Eeveeon").GetComponent<PlayerBehavior>();
+        }
         if(moving)
         {
             XMove = input.Test.MovementX.ReadValue<float>();    

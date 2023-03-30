@@ -21,7 +21,7 @@ public class BlueButtonBehavior : MonoBehaviour
             GetComponent<Animator>().SetBool("BeingHeldDown", false);
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -40,13 +40,9 @@ public class BlueButtonBehavior : MonoBehaviour
             Pressed = false;
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Bullet")
-        {
-            Pressed = false;
-        }
-        else if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             Pressed = false;
         }

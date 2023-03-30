@@ -383,18 +383,11 @@ public class PlayerBehavior : MonoBehaviour
         //Takes you to the next car
         if (collision.tag == "Finish")
         {
-            ScreenDeath();
-            if (controller.Segmented)
-            {
+            //ScreenDeath();
                 controller.Invoke("BackToMenu", 1);
-            }
-            else
-            {
-                Invoke("CarStart", 1);
-            }
             controller.CurrentCar = controller.CurrentCar + 1;
-            print(controller.CurrentCar);
-            textUpdate.BestTime();
+            //print(controller.CurrentCar);
+            //textUpdate.BestTime();
             rb.velocity = Vector2.zero;
             this.enabled = false;
         }

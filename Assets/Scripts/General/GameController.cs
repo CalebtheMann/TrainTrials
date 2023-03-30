@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour
         //Restart
         if (ControllerTest.instance.Reset != 0)
         {
-            SceneManager.LoadScene("BetaCars");
+            SceneManager.LoadScene("Menu");
         }
 
         //Escape
@@ -101,10 +101,16 @@ public class GameController : MonoBehaviour
         UsedGUN = 1;
         PlayerPrefs.SetInt("Gun", UsedGUN);
     }
+
+    public void ToTheFuse()
+    {
+        SceneManager.LoadScene("FuseScene");
+        behavior.Restart();
+    }
     public void BackToMenu()
     {
-        SceneManager.LoadScene("LevelMenu");
-        CurrentCar = 0;
+        SceneManager.LoadScene("Menu");
+        CurrentCar = 7;
     }
     public void Ending()
     {
