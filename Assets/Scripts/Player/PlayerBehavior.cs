@@ -280,7 +280,7 @@ public class PlayerBehavior : MonoBehaviour
             transform.eulerAngles = Vector3.forward * 0;
         }
 
-    }
+    }*/
     
     void StopTalking()
     {
@@ -288,7 +288,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("Walking", false);
         }
-    }*/
+    }
 
     void WhistlingAlong()
     {
