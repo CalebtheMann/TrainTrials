@@ -59,7 +59,7 @@ public class BulletBehavior : MonoBehaviour
     /// <returns></returns>
     IEnumerator Waiter()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(10);
         Destroy(gameObject);
     }
 }

@@ -30,13 +30,13 @@ public class GunBehavior : MonoBehaviour
         {
             sr.flipY = true;
             Vector2 handChange = transform.position;
-            transform.position = new Vector2(player.transform.position.x + 0.193f, player.transform.position.y - .3f);
+            transform.position = new Vector2(player.transform.position.x + 0.225f, player.transform.position.y - .25f);
         }
         else
         {
             sr.flipY = false;
             Vector2 handChange = transform.position;
-            transform.position = new Vector2(player.transform.position.x - 0.177f, player.transform.position.y - .3f);
+            transform.position = new Vector2(player.transform.position.x - 0.225f, player.transform.position.y - .25f);
         }
     }
 
