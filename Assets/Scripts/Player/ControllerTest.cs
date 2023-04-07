@@ -124,7 +124,7 @@ public class ControllerTest : MonoBehaviour
         } else {
             XMove = 0;
         }
-        if(jumping)
+        if (jumping)
         {
             YMove = 3;
         } else {

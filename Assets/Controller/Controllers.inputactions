@@ -323,6 +323,28 @@
                 },
                 {
                     "name": "",
+                    "id": "9ccbe440-6b83-497b-9e1a-1727acb8faa8",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shooting",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01daa893-5bbc-473f-8d8a-def33ba803eb",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shooting",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e9920f2b-10f8-4edd-8f88-887d72eae9c3",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",

@@ -222,7 +222,11 @@ public class PlayerBehavior : MonoBehaviour
                 GetComponent<Animator>().SetBool("Walking", true);
                 Left = false;
                 rb.AddRelativeForce(transform.right * speed);
-                if (rb.velocity.x < 3)
+                if (!onGround && rb.velocity.x < 0)
+                {
+                    rb.AddRelativeForce(transform.right * speed * 2);
+                }
+                else if (rb.velocity.x < 3)
                 {
                     rb.AddRelativeForce(transform.right * speed);
                 }
@@ -233,10 +237,15 @@ public class PlayerBehavior : MonoBehaviour
                 GetComponent<Animator>().SetBool("Walking", true);
                 Left = true;
                 rb.AddRelativeForce(transform.right * -speed);
-                if (rb.velocity.x > -3)
+                if (!onGround && rb.velocity.x > 0)
+                {
+                    rb.AddRelativeForce(transform.right * -speed * 2);
+                }
+                else if (rb.velocity.x > -3)
                 {
                     rb.AddRelativeForce(transform.right * -speed);
                 }
+
             }
             else
             {
@@ -339,6 +348,9 @@ public class PlayerBehavior : MonoBehaviour
             case 9:
                 transform.position = new Vector2(147.77f, -1.64f);
                 break;
+            case 10:
+                transform.position = new Vector2(159.22f, 1.05f);
+                break;
             default:
                 transform.position = new Vector2(72, -2); //Change this
                 break;
@@ -399,6 +411,10 @@ public class PlayerBehavior : MonoBehaviour
         if (collision.tag == "FuseStart")
         {
             controller.CurrentCar = 7;
+            jumpStart = 4;
+            JumpTimer = 1;
+            JumpTimerMax = 0.5f;
+            maxJumpHeight = 5;
         }
 
         if (collision.tag == "Checkpoint1")
@@ -409,6 +425,10 @@ public class PlayerBehavior : MonoBehaviour
         if (collision.tag == "Checkpoint2")
         {
             controller.CurrentCar = 9;
+        }
+        if (collision.tag == "Checkpoint3")
+        {
+            controller.CurrentCar = 10;
         }
 
         if (collision.tag == "DoorClosing")
