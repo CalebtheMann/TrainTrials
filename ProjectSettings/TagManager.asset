@@ -54,7 +54,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Deep Background
+  - name: DeepBackground
     uniqueID: 3619040791
     locked: 0
   - name: Default
@@ -68,6 +68,9 @@ TagManager:
     locked: 0
   - name: WhiteSquareLevel
     uniqueID: 3641427701
+    locked: 0
+  - name: AlmostBestLayer
+    uniqueID: 4278742447
     locked: 0
   - name: Player
     uniqueID: 3220561203

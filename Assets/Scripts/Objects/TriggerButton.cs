@@ -79,4 +79,31 @@ public class TriggerButton : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (Button)
+        {
+            if (collision.gameObject.tag == "Bullet")
+            {
+                Pressed = true;
+            }
+            
+            else
+            {
+                Pressed = false;
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (Button)
+        {
+            if (collision.gameObject.tag == "Bullet")
+            {
+                Pressed = false;
+            }
+        }
+    }
 }

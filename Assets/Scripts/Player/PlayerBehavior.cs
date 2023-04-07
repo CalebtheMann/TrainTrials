@@ -34,6 +34,7 @@ public class PlayerBehavior : MonoBehaviour
     TextKeeper textUpdate;
     public bool Gun = false;
     GameObject gunArm;
+    public GameObject Glox;
 
     void Start()
     {
@@ -347,9 +348,11 @@ public class PlayerBehavior : MonoBehaviour
                 break;
             case 9:
                 transform.position = new Vector2(147.77f, -1.64f);
+                Glox.transform.position = new Vector2(143f, -1.64f);
                 break;
             case 10:
                 transform.position = new Vector2(159.22f, 1.05f);
+                Glox.transform.position = new Vector2(147f, 1.05f);
                 break;
             default:
                 transform.position = new Vector2(72, -2); //Change this
