@@ -5,6 +5,18 @@ public class TriggerButton : MonoBehaviour
     public bool Button;
     public bool Pressed;
     public bool Closed;
+
+    private void Update()
+    {
+        if (Pressed)
+        {
+            GetComponent<Animator>().SetBool("BeingHeldDown", true);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("BeingHeldDown", false);
+        }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (Button)

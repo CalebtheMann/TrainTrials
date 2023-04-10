@@ -1,3 +1,4 @@
+using UnityEditor.Presets;
 using UnityEngine;
 
 public class TriggerDoor : MonoBehaviour
@@ -19,10 +20,12 @@ public class TriggerDoor : MonoBehaviour
         if (Button.Pressed)
         {
             rise = true;
+            GetComponent<Animator>().SetBool("Activated", true);
         }
         if (rise && Closer.Closed)
         {
             rise = false;
+            GetComponent<Animator>().SetBool("Activated", false);
         }
 
         if (rise && transform.position.y == startingPosition.y + 4)

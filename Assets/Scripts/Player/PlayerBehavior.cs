@@ -66,11 +66,11 @@ public class PlayerBehavior : MonoBehaviour
         {
             onGround = false;
         }
-        if (rb.velocity.x > 0)
+        if (onGround)
         {
             GetComponent<Animator>().SetBool("Falling", false);
         }
-        else if (rb.velocity.x < 0)
+        else
         {
             GetComponent<Animator>().SetBool("Falling", true);
         }

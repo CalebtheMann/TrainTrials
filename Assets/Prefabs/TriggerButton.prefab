@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1936244515848600424}
   - component: {fileID: 1936244515848600425}
   - component: {fileID: 1936244515848600426}
+  - component: {fileID: 8195866265809017244}
   m_Layer: 0
   m_Name: TriggerButton
   m_TagString: Destroyer
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1779168997
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4cb6031005774e94ab616b7209d71196, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6489d1bec0f2ded43aee4ec2d6aa3e4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,3 +128,23 @@ MonoBehaviour:
   Button: 1
   Pressed: 0
   Closed: 0
+--- !u!95 &8195866265809017244
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936244515848600430}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ac0c89161a810c499b728541051c650, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
