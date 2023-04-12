@@ -1,4 +1,3 @@
-using UnityEditor.Presets;
 using UnityEngine;
 
 public class TriggerDoor : MonoBehaviour
