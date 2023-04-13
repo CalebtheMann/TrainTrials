@@ -410,6 +410,87 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""39ccff40-c4ec-45e1-893f-dc7081a4df13"",
+            ""actions"": [
+                {
+                    ""name"": ""PlayGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""f620c88d-ddbb-49be-b591-5e8023fddef0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""6a74ee5b-ca9e-46a7-acc5-2143aa3833aa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b09b3d1e-8c72-4dd0-a152-b166bde0b567"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0681106-2686-4c9e-b534-418eca69bc5c"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3193377-2cd1-4d81-a35d-ec47a6cf4452"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfe7720b-b963-463a-80bc-ff385d535e22"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5764621b-b935-42dc-baec-292b255382c8"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -424,6 +505,10 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
         m_Test_StartAiming = m_Test.FindAction("StartAiming", throwIfNotFound: true);
         m_Test_Reseting = m_Test.FindAction("Reseting", throwIfNotFound: true);
         m_Test_EndGame = m_Test.FindAction("EndGame", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_PlayGame = m_Menu.FindAction("PlayGame", throwIfNotFound: true);
+        m_Menu_Exit = m_Menu.FindAction("Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -568,6 +653,47 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
         }
     }
     public TestActions @Test => new TestActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_PlayGame;
+    private readonly InputAction m_Menu_Exit;
+    public struct MenuActions
+    {
+        private @Controllers m_Wrapper;
+        public MenuActions(@Controllers wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PlayGame => m_Wrapper.m_Menu_PlayGame;
+        public InputAction @Exit => m_Wrapper.m_Menu_Exit;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @PlayGame.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnPlayGame;
+                @PlayGame.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnPlayGame;
+                @PlayGame.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnPlayGame;
+                @Exit.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnExit;
+                @Exit.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnExit;
+                @Exit.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnExit;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @PlayGame.started += instance.OnPlayGame;
+                @PlayGame.performed += instance.OnPlayGame;
+                @PlayGame.canceled += instance.OnPlayGame;
+                @Exit.started += instance.OnExit;
+                @Exit.performed += instance.OnExit;
+                @Exit.canceled += instance.OnExit;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface ITestActions
     {
         void OnJumping(InputAction.CallbackContext context);
@@ -578,5 +704,10 @@ public partial class @Controllers : IInputActionCollection2, IDisposable
         void OnStartAiming(InputAction.CallbackContext context);
         void OnReseting(InputAction.CallbackContext context);
         void OnEndGame(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnPlayGame(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
     }
 }
