@@ -1,22 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-///using UnityEngine.InputSystem;
+using UnityEngine.InputSystem;
 
 public class MainMenu : MonoBehaviour
 {
     GameController gameController;
     /// private Menus input;
-    /*InputActionAsset inputAsset;
+    InputActionAsset inputAsset;
     InputActionMap inputMap;
-    InputAction play;*/
+    InputAction play;
 
-    /*private void Awake()
+    private void Awake()
     {
         inputAsset = this.GetComponent<PlayerInput>().actions;
         inputMap = inputAsset.FindActionMap("Menu");
         play = inputMap.FindAction("PlayGame");
         play.performed += ctx => StartGame();
-    }*/
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -27,14 +27,11 @@ public class MainMenu : MonoBehaviour
         }
         gameController = GetComponent<GameController>();
     }
-    /*
+    
     public void FixedUpdate()
     {
-        if (ControllerTest.instance.YMove != 0)
-        {
-            StartGame();
-        }
-    }*/
+
+    }
     public void StartGame()
     {
         SceneManager.LoadScene("FuseScene");
