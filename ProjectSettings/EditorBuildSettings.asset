@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/BetaCars.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/The End.unity
+    path: Assets/Scenes/The Credits.unity
     guid: 4671f743cf029e44c951b8add7bed61d
   - enabled: 0
     path: Assets/Scenes/Cutscene.unity
