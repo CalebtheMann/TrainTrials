@@ -114,7 +114,7 @@ public class GameController : MonoBehaviour
     }
     public void Ending()
     {
-        SceneManager.LoadScene("The End");
+        SceneManager.LoadScene("WinScreen");
         CurrentCar = 0;
     }
 }

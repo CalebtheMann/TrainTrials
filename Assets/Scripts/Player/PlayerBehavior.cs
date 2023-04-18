@@ -401,7 +401,7 @@ public class PlayerBehavior : MonoBehaviour
         if (collision.tag == "Finish")
         {
             //ScreenDeath();
-                controller.Invoke("BackToMenu", 1);
+                controller.Invoke("Ending", 1);
             controller.CurrentCar = controller.CurrentCar + 1;
             //print(controller.CurrentCar);
             //textUpdate.BestTime();
@@ -425,20 +425,27 @@ public class PlayerBehavior : MonoBehaviour
         if (collision.tag == "Checkpoint1")
         {
             controller.CurrentCar = 8;
+            jumpStart = 4;
+            JumpTimer = 1;
+            JumpTimerMax = 0.5f;
+            maxJumpHeight = 5;
         }
 
         if (collision.tag == "Checkpoint2")
         {
             controller.CurrentCar = 9;
+            jumpStart = 4;
+            JumpTimer = 1;
+            JumpTimerMax = 0.5f;
+            maxJumpHeight = 5;
         }
         if (collision.tag == "Checkpoint3")
         {
             controller.CurrentCar = 10;
-        }
-
-        if (collision.tag == "DoorClosing")
-        {
-            //Add code to close doors
+            jumpStart = 4;
+            JumpTimer = 1;
+            JumpTimerMax = 0.5f;
+            maxJumpHeight = 5;
         }
         if (collision.tag == "The End")
         {
