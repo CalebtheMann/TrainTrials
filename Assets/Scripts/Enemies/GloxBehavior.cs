@@ -100,5 +100,6 @@ public class GloxBehavior : MonoBehaviour
     private void OnEnable()
     {
         transform.position = goxLox.transform.position;
+        goxLox.GetComponent<GloxBoxBehavior>().SetCanBeHit();
     }
 }

@@ -69,10 +69,12 @@ public class PlayerBehavior : MonoBehaviour
         if (onGround)
         {
             GetComponent<Animator>().SetBool("Falling", false);
+            rb.gravityScale = 0.01f;
         }
         else
         {
             GetComponent<Animator>().SetBool("Falling", true);
+            rb.gravityScale = 1;
         }
         //Checks which direction you should be facing
         if (Left)
@@ -215,7 +217,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             if (ControllerTest.instance.XMove > 0 && ControllerTest.instance.XMove < 0)
             {
-
+                
             }
             //Move right
             else if (ControllerTest.instance.XMove > 0 && rb.velocity.x < 15)

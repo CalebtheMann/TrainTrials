@@ -7,7 +7,7 @@ public class GloxBoxBehavior : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     public AudioClip Chaching;
-
+    public bool CanBeHit; 
     /// <summary>
     /// Find Box's body, and disappears upon loading the scene.
     /// </summary>
@@ -32,22 +32,27 @@ public class GloxBoxBehavior : MonoBehaviour
     /// </summary>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (CanBeHit == true)
         {
-            if (goxcode.BoxForm)
-            {
-                rb.velocity = Vector2.zero;
-                AudioSource.PlayClipAtPoint(Chaching, Camera.main.transform.position);
-                Invoke("Death", 1);
-                Invoke("UnbecomeBox", 1.0001f);
-                goxcode.BoxForm = false;
-                GetComponent<Animator>().SetTrigger("Unboxing");
-            }
-            else
-            {
-                goxcode.BoxForm = true;
-            }
 
+
+            if (collision.gameObject.tag == "Bullet")
+            {
+                if (goxcode.BoxForm)
+                {
+                    rb.velocity = Vector2.zero;
+                    AudioSource.PlayClipAtPoint(Chaching, Camera.main.transform.position);
+                    Invoke("Death", 1);
+                    Invoke("UnbecomeBox", 1.0001f);
+                    goxcode.BoxForm = false;
+                    GetComponent<Animator>().SetTrigger("Unboxing");
+                }
+                else
+                {
+                    goxcode.BoxForm = true;
+                }
+
+            }
         }
     }
 
@@ -73,5 +78,8 @@ public class GloxBoxBehavior : MonoBehaviour
     private void OnEnable()
     {
         transform.position = gox.transform.position;
+    }
+    public void SetCanBeHit(){
+        CanBeHit = !CanBeHit;
     }
 }
