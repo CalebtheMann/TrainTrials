@@ -20,6 +20,7 @@ TagManager:
   - Checkpoint1
   - Checkpoint2
   - Checkpoint3
+  - Resetter
   layers:
   - Default
   - TransparentFX
