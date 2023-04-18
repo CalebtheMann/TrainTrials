@@ -34,7 +34,7 @@ public class RepeatingBackground : MonoBehaviour
         //        break;
 
         //}
-
+        DontDestroyOnLoad(gameObject);
     }
     void FixedUpdate()
     {
