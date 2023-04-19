@@ -1,3 +1,4 @@
+using Unity.VectorGraphics;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -7,7 +8,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Eeveeon").transform;
+        
         if (Instance == null)
         {
             Instance = this;
@@ -17,6 +18,8 @@ public class CameraController : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+        player = GameObject.Find("Eeveeon").transform;
+
     }
 
     // Update is called once per frame
@@ -24,5 +27,10 @@ public class CameraController : MonoBehaviour
     {
         transform.position = new Vector3 (player.position.x, transform.position.y, -10);
        // DontDestroyOnLoad(gameObject);
+
+       /*if(Scene == "Menu" || Scene == "Winscreen")
+       {
+            Destroy(gameObject);
+       }*/
     }
 }

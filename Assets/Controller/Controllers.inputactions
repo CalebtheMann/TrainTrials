@@ -378,6 +378,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b027128c-1ba3-42ac-93d3-2bafc7b3551a",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reseting",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "801ba123-6820-408c-9414-e613b468b948",
                     "path": "<Keyboard>/f3",
                     "interactions": "",

@@ -20,7 +20,11 @@ public class GameController : MonoBehaviour
     public bool Segmented = false;
     public int CurrentCar;
     public int UsedGUN = 0;
-    AudioSource monkey;
+    AudioSource Title;
+    AudioSource LevelIntro;
+    AudioSource Level;
+    AudioSource Victory;
+    AudioSource Credits;
     bool songPlaying = false;
     public AudioClip Rip;
     GameObject player;
@@ -40,7 +44,7 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
-        monkey = GetComponent<AudioSource>();
+        Title = GetComponent<AudioSource>();
         BestTime1 = PlayerPrefs.GetFloat("1");
         BestTime2 = PlayerPrefs.GetFloat("2");
         BestTime3 = PlayerPrefs.GetFloat("3");
@@ -57,13 +61,13 @@ public class GameController : MonoBehaviour
 
         if (player == null && !songPlaying)
         {
-            //AudioSource.PlayClipAtPoint(monkey, Camera.main.transform.position);
-            monkey.Play();
+            //AudioSource.PlayClipAtPoint(Title, Camera.main.transform.position);
+            Title.Play();
             songPlaying = true;
         }
         else if (player != null)
         {
-            monkey.Stop();
+            Title.Stop();
             songPlaying = false;
         }
     }
