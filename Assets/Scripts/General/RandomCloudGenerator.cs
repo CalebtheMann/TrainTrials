@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RandomCloudGenerator : MonoBehaviour
 {
+    public static RandomCloudGenerator Instance;
     public float ScrollSpeed = 3;
     public const float ScrollWidth = 4;
     public GameObject Camera;
@@ -17,7 +18,15 @@ public class RandomCloudGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        /*if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);*/
     }
     void FixedUpdate()
     {

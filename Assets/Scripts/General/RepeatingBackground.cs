@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RepeatingBackground : MonoBehaviour
 {
+    public static RepeatingBackground Instance;
     public float ScrollSpeed = 3;
     public const float ScrollWidth = 4;
     public GameObject Camera;
@@ -34,10 +35,26 @@ public class RepeatingBackground : MonoBehaviour
         //        break;
 
         //}
-        DontDestroyOnLoad(gameObject);
+        /*if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);*/
+        if (Camera == null)
+        {
+            Camera = GameObject.Find("Main Camera");
+        }
     }
     void FixedUpdate()
     {
+        if (Camera == null)
+        {
+            Camera = GameObject.Find("Main Camera");
+        }
         //Getting the current background position
         Vector2 pos = transform.position;
 
