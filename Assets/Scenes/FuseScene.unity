@@ -3641,7 +3641,7 @@ GameObject:
   - component: {fileID: 446688333}
   - component: {fileID: 446688332}
   - component: {fileID: 446688331}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Sand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7258,7 +7258,7 @@ GameObject:
   - component: {fileID: 815982009}
   - component: {fileID: 815982008}
   - component: {fileID: 815982010}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: CliffLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29426,7 +29426,7 @@ GameObject:
   - component: {fileID: 1122153930}
   - component: {fileID: 1122153929}
   - component: {fileID: 1122153931}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Destroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29441,7 +29441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122153927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.09, y: -2.96, z: 0}
+  m_LocalPosition: {x: 18.09, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51146,7 +51146,7 @@ GameObject:
   - component: {fileID: 2044686132}
   - component: {fileID: 2044686131}
   - component: {fileID: 2044686130}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Destroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51161,7 +51161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044686128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.09, y: -2.96, z: 0}
+  m_LocalPosition: {x: 18.09, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51873,9 +51873,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clouds
       objectReference: {fileID: 0}
+    - target: {fileID: 3755955568408796879, guid: d12a01b992c5b0941948960851b2e51a, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 3755955568408796915, guid: d12a01b992c5b0941948960851b2e51a, type: 3}
       propertyPath: m_SortingOrder
       value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3755955568989963506, guid: d12a01b992c5b0941948960851b2e51a, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3755955568989963507, guid: d12a01b992c5b0941948960851b2e51a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3755955568408796877, guid: d12a01b992c5b0941948960851b2e51a, type: 3}
