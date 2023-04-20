@@ -1,5 +1,7 @@
 using Unity.VectorGraphics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Scene = UnityEngine.SceneManagement.Scene;
 
 public class CameraController : MonoBehaviour
 {
@@ -19,7 +21,7 @@ public class CameraController : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         player = GameObject.Find("Eeveeon").transform;
-
+        SceneManager.sceneLoaded += HandleSceneLoaded;
     }
 
     // Update is called once per frame
@@ -28,9 +30,18 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3 (player.position.x, transform.position.y, -10);
        // DontDestroyOnLoad(gameObject);
 
-       /*if(Scene == "Menu" || Scene == "Winscreen")
-       {
-            Destroy(gameObject);
-       }*/
+    }
+
+
+    //first scene is what we're in now, second scene is the next one
+    void HandleSceneLoaded(Scene scene, LoadSceneMode mode){
+        //do your scene logic by doing scene.name
+        print(scene.name.ToString() + "Current") ;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
+
     }
 }
