@@ -36,7 +36,8 @@ public class CreditScript : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("Menu");
+        //SceneManager.LoadScene("Menu");
+        Application.Quit();
     }
     public void EndGame()
     {

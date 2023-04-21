@@ -8,6 +8,7 @@ public class ControllerTest : MonoBehaviour
 {
     public PlayerBehavior Player;
 
+    InputActionAsset inputAsset;
     private Controllers input;
     public static ControllerTest instance;
     bool moving;
@@ -37,6 +38,7 @@ public class ControllerTest : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+        inputAsset = this.GetComponent<PlayerInput>().actions;
         input = new Controllers();
         input.Test.Jumping.performed += ctx => Jumping();
         input.Test.Jumping.canceled += ctx => JumpingEnded();
@@ -138,14 +140,14 @@ public class ControllerTest : MonoBehaviour
         {
             GunShot = 0;
         }
-        if (reseting)
+        /*if (reseting)
         {
             Reset = input.Test.Reseting.ReadValue<float>();
         }
         else
         {
             Reset = 0;
-        }
+        }*/
         if (IsAiming)
         {
            AimDirection = input.Test.Aiming.ReadValue<Vector2>();

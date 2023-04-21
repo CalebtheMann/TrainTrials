@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RepeatingBackground : MonoBehaviour
+public class StartingBackground : MonoBehaviour
 {
 
     public float ScrollSpeed = 3;
@@ -10,6 +10,7 @@ public class RepeatingBackground : MonoBehaviour
     public GameObject Camera;
     // public int StartingPosition;
     public GameObject Background;
+    public GameObject BackgroundStart;
     public float StartPos = 14;
     bool spawned = true;
 
@@ -57,11 +58,11 @@ public class RepeatingBackground : MonoBehaviour
         pos.x -= ScrollSpeed * Time.deltaTime;
 
         //Check if the object is completely off the screen
-       /* if (transform.position.x < Camera.transform.position.x - 30)
-        {
-            pos.x += 30;
-        }*/
-       
+        /* if (transform.position.x < Camera.transform.position.x - 30)
+         {
+             pos.x += 30;
+         }*/
+
 
         //Updating the postion to the new place
         transform.position = pos;
@@ -70,12 +71,14 @@ public class RepeatingBackground : MonoBehaviour
     {
         Vector2 pos = transform.position;
         pos.x = CameraController.Instance.gameObject.transform.position.x + StartPos;
-        if (collision.gameObject.tag == "Resetter" && spawned)
+            pos.x = CameraController.Instance.gameObject.transform.position.x;
+            Instantiate(BackgroundStart, pos, Quaternion.identity, CameraController.Instance.transform);
+        if (collision.gameObject.tag == "Resetter" & spawned)
         {
             print("hi");
             var item = Instantiate(Background, pos, Quaternion.identity, CameraController.Instance.transform);
             CameraController.Instance.Backgrounds.Add(item);
-            spawned = false;
+            spawned = false; 
             Destroy(this.GetComponent<BoxCollider>());
         }
     }

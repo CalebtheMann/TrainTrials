@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,11 @@ public class CameraController : MonoBehaviour
 {
     public static CameraController Instance;
     Transform player;
+    public List<GameObject> Backgrounds;
+    public AudioClip MainTheme;
+    public AudioClip IntroTheme;
+    bool changeMusic = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,28 +26,55 @@ public class CameraController : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+        Backgrounds = new List<GameObject>();
         player = GameObject.Find("Eeveeon").transform;
-        SceneManager.sceneLoaded += HandleSceneLoaded;
+        //SceneManager.sceneLoaded += HandleSceneLoaded;
+        Invoke("MusicChange", 2.925f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3 (player.position.x, transform.position.y, -10);
+            transform.position = new Vector3 (player.position.x, transform.position.y, -10);
+
        // DontDestroyOnLoad(gameObject);
 
     }
 
 
-    //first scene is what we're in now, second scene is the next one
-    void HandleSceneLoaded(Scene scene, LoadSceneMode mode){
+    /*void HandleSceneLoaded(Scene scene, LoadSceneMode mode){
         //do your scene logic by doing scene.name
         print(scene.name.ToString() + "Current") ;
+        foreach(var item in Backgrounds){
+            Destroy(item);
+        }
+        Backgrounds.Clear();
+
+        /*if (scene.name == "Winscreen" || scene.name == "Menu")
+        {
+            GetComponent<AudioSource>().Stop();
+            GetComponent<AudioSource>().clip = IntroTheme;
+            changeMusic = true;
+        }
+        if (scene.name == "FuseScene" && changeMusic)
+        {
+            GetComponent<AudioSource>().Play();
+            Invoke("MusicChange", 2.925f);
+        }
+    }*/
+    private void MusicChange()
+    {
+        GetComponent<AudioSource>().clip = MainTheme;
+        GetComponent<AudioSource>().Play();
     }
 
-    private void OnDisable()
+    public void PlayerFind()
+    {
+        player = GameObject.Find("Eeveeon").transform;
+    }
+    /*private void OnDisable()
     {
         SceneManager.sceneLoaded -= HandleSceneLoaded;
 
-    }
+    }*/
 }

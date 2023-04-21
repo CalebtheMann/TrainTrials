@@ -35,12 +35,13 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("FuseScene");
+        gameController.ToTheFuse();
     }
     public void EndGame()
     {
         Application.Quit();
     }
-    /*
+    
     private void OnEnable()
     {
         inputMap.Enable();
@@ -49,5 +50,5 @@ public class MainMenu : MonoBehaviour
     private void OnDisable()
     {
         inputMap.Disable();
-    }*/
+    }
 }

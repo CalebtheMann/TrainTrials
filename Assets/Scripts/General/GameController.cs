@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     public AudioClip Rip;
     GameObject player;
     PlayerBehavior behavior;
+    GameObject TestDog;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         player = GameObject.Find("Eeveeon");
+        TestDog = GameObject.Find("TestDog");
 
         if (player == null && !songPlaying)
         {
@@ -108,17 +110,34 @@ public class GameController : MonoBehaviour
 
     public void ToTheFuse()
     {
-        SceneManager.LoadScene("FuseScene");
-        behavior.Restart();
+        //SceneManager.LoadScene("FuseScene");
+        //behavior.Restart();
+        if (Camera.main != null)
+        {
+            CameraController.Instance.GetComponent<AudioSource>().Play();
+            CameraController.Instance.Invoke("MusicChange", 2.925f);
+            CameraController.Instance.Invoke("PlayerFind", 0.1f);
+        }
     }
     public void BackToMenu()
     {
         SceneManager.LoadScene("Menu");
         CurrentCar = 7;
+        if (Camera.main != null)
+        {
+            CameraController.Instance.GetComponent<AudioSource>().Stop();
+            CameraController.Instance.GetComponent<AudioSource>().clip = CameraController.Instance.IntroTheme;
+        }
     }
     public void Ending()
     {
         SceneManager.LoadScene("WinScreen");
         CurrentCar = 0;
+        if (Camera.main != null)
+        {
+            CameraController.Instance.GetComponent<AudioSource>().Stop();
+            CameraController.Instance.GetComponent<AudioSource>().clip = CameraController.Instance.IntroTheme;
+        }
+        Destroy(TestDog);
     }
 }

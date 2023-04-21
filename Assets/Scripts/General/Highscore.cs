@@ -37,7 +37,7 @@ public class Highscore : MonoBehaviour
         controller = GameObject.Find("GameController").GetComponent<GameController>();
         if (controller.BestTime1 == 0 || controller.BestTime2 == 0 || controller.BestTime3 == 0 || controller.BestTime4 == 0 || controller.BestTime5 == 0 || controller.BestTime6 == 0)
         {
-            WinText.text = "Data insufficient                              Total Time-?:??";
+           // WinText.text = "Data insufficient                              Total Time-?:??";
         }
         else if (controller.BestTime1 + controller.BestTime2 + controller.BestTime3 + controller.BestTime4 + controller.BestTime5 + controller.BestTime6 < highTime ||highTime == 0 )
         {

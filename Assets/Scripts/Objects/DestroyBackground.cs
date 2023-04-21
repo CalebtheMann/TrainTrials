@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq; 
 public class DestroyBackground : MonoBehaviour
 {
     public GameObject Background;
@@ -21,6 +21,11 @@ public class DestroyBackground : MonoBehaviour
     {
         if (collision.gameObject.tag == "Resetter")
         {
+           var item =  CameraController.Instance.Backgrounds.FirstOrDefault(x => x.gameObject == Background);
+           if(item != null)
+           {
+                CameraController.Instance.Backgrounds.Remove(item);
+           }
             Destroy(Background);
         }
     }
