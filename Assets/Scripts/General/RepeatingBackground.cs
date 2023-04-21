@@ -73,8 +73,8 @@ public class RepeatingBackground : MonoBehaviour
         if (collision.gameObject.tag == "Resetter" && spawned)
         {
             print("hi");
-            var item = Instantiate(Background, pos, Quaternion.identity, CameraController.Instance.transform);
-            CameraController.Instance.Backgrounds.Add(item);
+            var item = Instantiate(Background, pos, Quaternion.identity);
+            
             spawned = false;
             Destroy(this.GetComponent<BoxCollider>());
         }

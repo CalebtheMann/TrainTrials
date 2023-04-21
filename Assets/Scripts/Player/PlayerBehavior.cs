@@ -41,12 +41,16 @@ public class PlayerBehavior : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            CameraController.Instance.GetComponent<AudioSource>().Play();
+            CameraController.Instance.Invoke("MusicChange", 2.925f);
+            CameraController.Instance.Invoke("PlayerFind", 0.1f);
         }
         else
         {
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject); //Without this it restarts with no dive
+        Screen = GameObject.Find("Main Camera");
         rb = GetComponent<Rigidbody2D>();
         sr = rb.GetComponent<SpriteRenderer>();
         controller = GameObject.Find("GameController").GetComponent<GameController>();
@@ -309,7 +313,10 @@ public class PlayerBehavior : MonoBehaviour
     void CarStart()
     {
         //textUpdate.DeathScreenDeath();
-        Screen.GetComponent<Animator>().SetBool("Blacked Out", false);
+        if (gameObject != null)
+        {
+            Screen.GetComponent<Animator>().SetBool("Blacked Out", false);
+        }
         //textUpdate.TimerReset();
         //gunArm.SetActive(false);
         //Invoke("WhistlingAlong", 0.01f);
@@ -372,7 +379,10 @@ public class PlayerBehavior : MonoBehaviour
 
     void ScreenDeath()
     {
-        Screen.GetComponent<Animator>().SetBool("Blacked Out", true);
+        if (gameObject != null)
+        {
+            Screen.GetComponent<Animator>().SetBool("Blacked Out", true);
+        }
     }
     
     private void OnCollisionEnter2D(Collision2D collision)

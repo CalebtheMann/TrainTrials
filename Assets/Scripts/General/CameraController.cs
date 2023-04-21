@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     public List<GameObject> Backgrounds;
     public AudioClip MainTheme;
     public AudioClip IntroTheme;
+    public GameObject Eeveon;
     bool changeMusic = false;
 
     // Start is called before the first frame update
@@ -35,7 +36,8 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            transform.position = new Vector3 (player.position.x, transform.position.y, -10);
+        player = GameObject.Find("Eeveeon").transform;
+        transform.position = new Vector3 (player.position.x, transform.position.y, -10);
 
        // DontDestroyOnLoad(gameObject);
 
