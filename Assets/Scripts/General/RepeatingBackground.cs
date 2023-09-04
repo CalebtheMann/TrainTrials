@@ -77,6 +77,7 @@ public class RepeatingBackground : MonoBehaviour
             
             spawned = false;
             Destroy(this.GetComponent<BoxCollider>());
+            
         }
     }
 }
