@@ -37,6 +37,7 @@ public class VictoryScript : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("The Credits");
+        //SceneManager.LoadScene("The Credits Handles");
     }
     public void EndGame()
     {
