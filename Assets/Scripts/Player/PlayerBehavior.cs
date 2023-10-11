@@ -126,7 +126,7 @@ public class PlayerBehavior : MonoBehaviour
         }
 
         //Movement
-        if (ableToMove)
+        /*if (ableToMove)
         {
             //Starting a jump
             if (ControllerTest.instance.YMove != 0 && onGround && canJump)
@@ -155,7 +155,7 @@ public class PlayerBehavior : MonoBehaviour
                     }
                  Invoke("StopDiving", 4);
                 }
-            }*/
+            }
         }
         else
         {
@@ -165,7 +165,7 @@ public class PlayerBehavior : MonoBehaviour
                 playBonk = false;
                 rb.velocity /= 2;
                 StopDiving();
-            }*/
+            }
         //Bonking 
             if (Left && touchingGround)
             {
@@ -204,7 +204,7 @@ public class PlayerBehavior : MonoBehaviour
             {
                 canJump = true;
                 jumping = false;
-            }
+            }*/
     }
     void FixedUpdate()
     {
@@ -262,8 +262,83 @@ public class PlayerBehavior : MonoBehaviour
                 Invoke("StopTalking", 0.5f);
             }
             //Jumping action
+                //Starting a jump
+                if (ControllerTest.instance.YMove != 0 && onGround && canJump)
+                {
+                    canJump = false;
+                    jumping = true;
+                    rb.AddForce(transform.up * jumpStart, ForceMode2D.Impulse);
+                    GetComponent<Animator>().SetTrigger("Jumping");
+                }
+                /*if (ControllerTest.instance.DiveMove != 0)
+                {
+                    if (!onGround)
+                    {
+                    //Mid-air diving
+                        ableToMove = false;
+                        playBonk = true;
+                        if (!Left)
+                        {
+                            rb.AddRelativeForce(transform.right * diveSpeed * 1);
+                            transform.eulerAngles = Vector3.forward * -90;
+                        }
+                        else
+                        {
+                            rb.AddRelativeForce(transform.right * diveSpeed * -1);
+                            transform.eulerAngles = Vector3.forward * 90;
+                        }
+                     Invoke("StopDiving", 4);
+                    }
+                }*/
+            }
+            else
+            {
+                //Cancel dive
+                /*if (ControllerTest.instance.DiveMove != 0 && onGround && !canJump && !rollTime)
+                {
+                    playBonk = false;
+                    rb.velocity /= 2;
+                    StopDiving();
+                }*/
+                //Bonking 
+                if (Left && touchingGround)
+                {
+                    hitWall = Physics2D.Raycast(transform.position, Vector2.left, 1f, GroundMask);
 
-        }
+                    if (hitWall)
+                    {
+                        CancelInvoke("StopDiving");
+                        rb.AddRelativeForce(transform.right * diveSpeed / -4);
+                        transform.eulerAngles = Vector3.forward * -90;
+                        rollTime = true;
+                        GetComponent<Animator>().SetTrigger("Bonked");
+                        Invoke("StopDiving", 5);
+                    }
+                }
+                else if (touchingGround)
+                {
+                    hitWall = Physics2D.Raycast(transform.position, Vector2.right, 1f, GroundMask);
+                    if (hitWall)
+                    {
+                        CancelInvoke("StopDiving");
+                        rb.AddRelativeForce(transform.right * diveSpeed / 4);
+                        transform.eulerAngles = Vector3.forward * 90;
+                        rollTime = true;
+                        GetComponent<Animator>().SetTrigger("Bonked");
+                        Invoke("StopDiving", 5);
+                    }
+                }
+            }
+            //Jumping cont.
+            if (ControllerTest.instance.YMove != 0 && jumping)
+            {
+                rb.AddForce(transform.up * (JumpTimer - delay) * -maxJumpHeight * (JumpTimer + JumpTimerMax));
+            }
+            else
+            {
+                canJump = true;
+                jumping = false;
+            }
     }
 
     /*public void Dive()
@@ -313,6 +388,7 @@ public class PlayerBehavior : MonoBehaviour
     void CarStart()
     {
         //textUpdate.DeathScreenDeath();
+        Glox = GameObject.Find("Glox");
         if (gameObject != null)
         {
             Screen.GetComponent<Animator>().SetBool("Blacked Out", false);

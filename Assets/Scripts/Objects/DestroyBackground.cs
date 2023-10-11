@@ -21,12 +21,15 @@ public class DestroyBackground : MonoBehaviour
     {
         if (collision.gameObject.tag == "Resetter")
         {
-           var item =  CameraController.Instance.Backgrounds.FirstOrDefault(x => x.gameObject == Background);
+           /*var item =  CameraController.Instance.Backgrounds.FirstOrDefault(x => x.gameObject == Background);
            if(item != null)
            {
                 CameraController.Instance.Backgrounds.Remove(item);
-           }
-            Destroy(Background);
+           }*/
+            //Destroy(Background);
+            Vector2 pos = Background.transform.position;
+            pos.x += 225;
+            Background.transform.position = pos;
         }
     }
 }

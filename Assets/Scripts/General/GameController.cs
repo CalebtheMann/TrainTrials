@@ -90,16 +90,19 @@ public class GameController : MonoBehaviour
             }
         }*/
         //Restart
-        if (ControllerTest.instance.Reset != 0)
-        {
-            SceneManager.LoadScene("Menu");
-        }
-
-        //Escape
-        /*if (Input.GetKeyDown(KeyCode.Escape))
+        /*if (ControllerTest.instance.Reset != 0)
         {
             SceneManager.LoadScene("Menu");
         }*/
+
+        //Escape
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "Menu")
+        {
+        BackToMenu();
+            
+        } else if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "Menu") {
+            Application.Quit();
+        }
     }
     public void UsingGUN()
     {
@@ -122,12 +125,12 @@ public class GameController : MonoBehaviour
     public void BackToMenu()
     {
         SceneManager.LoadScene("Menu");
-        CurrentCar = 7;
         if (Camera.main != null)
         {
             CameraController.Instance.GetComponent<AudioSource>().Stop();
             CameraController.Instance.GetComponent<AudioSource>().clip = CameraController.Instance.IntroTheme;
         }
+        Destroy(TestDog);
     }
     public void Ending()
     {
@@ -135,7 +138,6 @@ public class GameController : MonoBehaviour
         CurrentCar = 0;
         if (Camera.main != null)
         {
-            Debug.Log("Stop Music");
             CameraController.Instance.GetComponent<AudioSource>().Stop();
             CameraController.Instance.GetComponent<AudioSource>().clip = CameraController.Instance.IntroTheme;
         }

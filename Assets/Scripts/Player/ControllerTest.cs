@@ -103,7 +103,7 @@ public class ControllerTest : MonoBehaviour
     }
     private void OnDisable()
     {
-        input.Test.Jumping.performed -= ctx => Jumping();
+        /*input.Test.Jumping.performed -= ctx => Jumping();
         input.Test.Jumping.canceled -= ctx => JumpingEnded();
         input.Test.Diving.performed -= ctx => Diving();
         input.Test.Shooting.performed -= ctx => Shooting();
@@ -111,7 +111,7 @@ public class ControllerTest : MonoBehaviour
         input.Test.MovementX.started -= MovementX_started;
         input.Test.MovementX.canceled -= MovementX_ended;
         input.Test.StartAiming.started -= Aiming_started;
-        input.Test.StartAiming.canceled -= Aiming_ended;
+        input.Test.StartAiming.canceled -= Aiming_ended;*/
         input.Test.Disable();
     }
     private void Update()

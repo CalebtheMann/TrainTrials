@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("FuseScene");
-        gameController.ToTheFuse();
+        //gameController.ToTheFuse();
     }
     public void EndGame()
     {

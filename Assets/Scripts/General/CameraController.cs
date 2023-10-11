@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Scene = UnityEngine.SceneManagement.Scene;
 
 public class CameraController : MonoBehaviour
 {
@@ -12,7 +10,6 @@ public class CameraController : MonoBehaviour
     public AudioClip MainTheme;
     public AudioClip IntroTheme;
     public GameObject Eeveon;
-    bool changeMusic = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +33,12 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.Find("Eeveeon").transform;
-        transform.position = new Vector3 (player.position.x, transform.position.y, -10);
+        if (player)
+        {
+            player = GameObject.Find("Eeveeon").transform;
+            transform.position = new Vector3 (player.position.x, transform.position.y, -10);
+        }
+        
 
        // DontDestroyOnLoad(gameObject);
 
@@ -66,8 +67,12 @@ public class CameraController : MonoBehaviour
     }*/
     private void MusicChange()
     {
-        GetComponent<AudioSource>().clip = MainTheme;
-        GetComponent<AudioSource>().Play();
+        if(SceneManager.GetActiveScene().name == "FuseScene")
+        {
+            GetComponent<AudioSource>().clip = MainTheme;
+            GetComponent<AudioSource>().Play();
+        }
+        
     }
 
     public void PlayerFind()

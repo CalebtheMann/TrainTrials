@@ -26,6 +26,7 @@ public class GunBehavior : MonoBehaviour
     /// </summary>
     void Update()
     {
+        //Checks which direction you should be facing
         if (player.Left)
         {
             sr.flipY = true;
@@ -46,9 +47,10 @@ public class GunBehavior : MonoBehaviour
     void FixedUpdate()
     {
         //The original gun aiming system
-        //Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        
-        float pew = Mathf.Atan2(ControllerTest.instance.AimDirection.y, ControllerTest.instance.AimDirection.x) * Mathf.Rad2Deg;
+        Vector3 aim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        //The newer gun aiming system
+        //float pew = Mathf.Atan2(ControllerTest.instance.AimDirection.y, ControllerTest.instance.AimDirection.x) * Mathf.Rad2Deg;
+        float pew = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, pew);
 
         if (ControllerTest.instance.GunShot != 0 && canFire == true)
